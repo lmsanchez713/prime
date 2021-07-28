@@ -1,6 +1,6 @@
-build/
+c/build/
 .vs/
-out/
+c/out/
 
 # Prerequisites
 *.d
