@@ -1,0 +1,1 @@
+A princípio o plano é rodar o motor Magnum.Graphics, sendo este projeto também um teste das ferramentas CMake e GitHub.<br>
