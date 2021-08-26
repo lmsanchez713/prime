@@ -1,6 +1,7 @@
 c/build/
 .vs/
 c/out/
+xamarin/
 
 # Prerequisites
 *.d
