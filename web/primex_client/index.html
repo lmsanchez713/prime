@@ -6,11 +6,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Mimes Pyramidal Broker v1.0</title>
+  <title>Mimes Pyramidal Broker v1.0 God Edition</title>
   <meta name="description" content="Um aplicativo de corretagem de ativos.">
   <meta name="author" content="Mimes">
 
-  <meta property="og:title" content="Mimes Pyramidal Broker v1.0">
+  <meta property="og:title" content="Mimes Pyramidal Broker v1.0 God Edition">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
   <meta property="og:description" content="Um aplicativo de corretagem de ativos.">
@@ -25,9 +25,18 @@
 </head>
 
 <body>
-  <!-- your content here... -->
-  <!-- <script src="js/scripts.js"></script> -->
-  <script></script>
+  <div id="app">
+    {{ message }}
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Mimes Pyramidal Broker v1.0 God Edition'
+      }
+    });
+  </script>
 </body>
 
 </html>
