@@ -1,6 +1,6 @@
-c/build/
+c/*/build/
 .vs/
-c/out/
+c/*/out/
 xamarin/
 
 # Prerequisites

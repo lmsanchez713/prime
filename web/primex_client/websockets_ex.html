@@ -1,0 +1,130 @@
+<!doctype html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mimi Broke Investor v1.0 God Version</title>
+    <meta name="description" content="A simple HTML5 Template for new projects.">
+    <meta name="author" content="SitePoint">
+
+    <meta property="og:title" content="A Basic HTML5 Template">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
+    <meta property="og:description" content="A simple HTML5 Template for new projects.">
+    <!-- <meta property="og:image" content="image.png"> -->
+
+    <!-- <link rel="icon" href="/favicon.ico"> -->
+    <!-- <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
+    <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
+
+    <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+
+    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.js"></script> -->
+
+</head>
+
+<body>
+
+    <div id="div_saida">MIMI BROKER v1.0<br></div>
+    <!-- <script src="js/scripts.js"></script> -->
+
+    <script>
+
+        var ws;
+        var saida;
+
+        function inicializar() {
+
+            saida = document.getElementById("div_saida");
+
+            saida.innerHTML += "Iniciando conexão com a Deriv...";
+
+            ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=1089');
+
+            saida.innerHTML += "OK<br>Autenticando...";
+
+            ws.onopen = function (evt) {
+
+                var auth1 = {
+                    "authorize": "HVumMdEbE5TdVUP"
+                };
+
+                var auth2 = {
+                    "authorize": {
+                        "account_list": [
+                            {
+                                "account_type": "trading",
+                                "currency": "USD",
+                                "is_disabled": 0,
+                                "is_virtual": 1,
+                                "landing_company_name": "virtual",
+                                "loginid": "VRTC4549934",
+                                "trading": {}
+                            }
+                        ],
+                        "balance": 10000,
+                        "country": "br",
+                        "currency": "USD",
+                        "email": "lmsanchez640@hotmail.com",
+                        "fullname": "  ",
+                        "is_virtual": 1,
+                        "landing_company_fullname": "Deriv Limited",
+                        "landing_company_name": "virtual",
+                        "local_currencies": {
+                            "BRL": {
+                                "fractional_digits": 2
+                            }
+                        },
+                        "loginid": "VRTC4549934",
+                        "preferred_language": "PT",
+                        "scopes": [
+                            "read",
+                            "trade",
+                            "payments",
+                            "admin",
+                            "trading_information"
+                        ],
+                        "trading": {},
+                        "upgradeable_landing_companies": [
+                            "svg"
+                        ],
+                        "user_id": 8662791
+                    },
+                    "echo_req": {
+                        "authorize": "<not shown>"
+                    },
+                    "msg_type": "authorize"
+                };
+
+                var auth3 = {
+                    "app_list": [
+
+                    ],
+                    "echo_req": {
+                        "app_list": 1
+                    },
+                    "msg_type": "app_list"
+                };
+
+                ws.send(JSON.stringify({
+                    ticks: 'R_100'
+                }));
+
+            };
+
+            ws.onmessage = function (msg) {
+                var data = JSON.parse(msg.data);
+                console.log('ticks update: %o', data);
+            };
+
+        }
+
+        inicializar();
+
+    </script>
+</body>
+
+</html>
