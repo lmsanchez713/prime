@@ -1,0 +1,1 @@
+O server em C++ deve ser capaz de aceitar conexões WebSocket de forma simultânea e paralela, mas devido à complexidade inerente ao C++ o server está sendo feito em Python. Conforme o projeto for lançado e a quantidade de usuários aumentar, esse server deve ser implementado em C++.
