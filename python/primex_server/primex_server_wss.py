@@ -1,10 +1,14 @@
 #!/usr/bin/env python
 
-# WS server example
+# WSS (WS over TLS) server example, with a self-signed certificate
+
+# start_server = websockets.serve(hello, "140.82.31.140", 9713, ssl=ssl_context)
 
 import asyncio
 import websockets
 import sys
+import pathlib
+import ssl
 
 async def ainput(string: str) -> str:
     # await asyncio.get_event_loop().run_in_executor(
@@ -22,8 +26,8 @@ async def hello(websocket, path):
         await websocket.send(greeting)
         print(f"> {greeting}")
 
-async def server_proc(parada):
-    async with websockets.serve(hello, "127.0.0.1", 9713):# as websockets_server:
+async def server_proc(parada, ssl_context):
+    async with websockets.serve(hello, "140.82.31.140", 9713, ssl=ssl_context):# as websockets_server:
         await parada
 
 async def main(parada, server_ws):
@@ -51,7 +55,13 @@ loop = asyncio.get_event_loop()
 
 parada = loop.create_future()
 
-server_ws = loop.create_task(server_proc(parada))
+ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+# localhost_pem = pathlib.Path(__file__).with_name("localhost.pem")
+certfile = pathlib.Path(__file__).with_name("/var/www/certs/formatafacil.com.br/cert-chain.crt")
+keyfile = pathlib.Path(__file__).with_name("/var/www/certs/formatafacil.com.br/cert.key")
+ssl_context.load_cert_chain(certfile, keyfile)
+
+server_ws = loop.create_task(server_proc(parada, ssl_context))
 loop.run_until_complete(main(parada, server_ws))
 # asyncio.get_event_loop().run_forever()
 
