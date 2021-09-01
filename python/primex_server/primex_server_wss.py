@@ -7,7 +7,7 @@
 import asyncio
 import websockets
 import sys
-import pathlib
+# import pathlib
 import ssl
 
 async def ainput(string: str) -> str:
@@ -60,6 +60,7 @@ ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 # certfile = pathlib.Path(__file__).with_name("/var/www/certs/formatafacil.com.br/cert-chain.crt")
 # keyfile = pathlib.Path(__file__).with_name("/var/www/certs/formatafacil.com.br/cert.key")
 # ssl_context.load_cert_chain(certfile, keyfile)
+ssl_context.minimum_version = ssl.TLSVersion.TLSv1_3
 ssl_context.load_cert_chain("/var/www/certs/formatafacil.com.br/cert-chain.crt", "/var/www/certs/formatafacil.com.br/cert.key")
 
 server_ws = loop.create_task(server_proc(parada, ssl_context))
