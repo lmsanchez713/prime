@@ -3,7 +3,7 @@ c/*/build/
 c/*/out/
 xamarin/
 
-ff_upd.sh
+ff_upda.sh
 
 # Prerequisites
 *.d
