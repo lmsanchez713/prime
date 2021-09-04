@@ -32,6 +32,8 @@
 
     <barra_superior></barra_superior>
 
+    <my-checkbox></my-checkbox>
+
     <span v-html="message"></span>
 
   </div>
@@ -39,6 +41,14 @@
   <script src="jquery-3.6.0.js"></script>
   <script src="bootstrap.bundle.js"></script>
   <script src="vue.js"></script>
+
+  <script type="text/x-template" id="checkbox-template">
+    <div class="checkbox-wrapper" @click="check">
+      <div :class="{ checkbox: true, checked: checked }"></div>
+      <div class="title">{{ title }}</div>
+    </div>
+  </script>
+
   <script>
 
     Vue.component('barra_superior', {
@@ -69,6 +79,16 @@
                     </div>
                   </div>
                 </header>`
+    });
+
+    Vue.component('my-checkbox', {
+      template: '#checkbox-template',
+      data() {
+        return { checked: false, title: 'Check me' }
+      },
+      methods: {
+        check() { this.checked = !this.checked; }
+      }
     });
 
     var vueapp = new Vue({
