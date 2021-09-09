@@ -67,29 +67,29 @@
     <script>
 
       var ws;
-      var saida = document.getElementById("div-saida").innerHTML;
+      var saida = document.getElementById("div-saida");
 
       function inicializar() {
 
-        saida += "<br>Iniciando conexão WebSockets com o servidor Pytão...";
+        saida.innerHTML += "<br>Iniciando conexão WebSockets com o servidor Pytão...";
 
         ws = new WebSocket('wss://formatafacil.com.br:9713');
 
-        saida += "<br>OK<br>Trocando dados...<br>Enviando 'Lucas'";
+        saida.innerHTML += "<br>OK<br>Trocando dados...<br>Enviando 'Lucas'";
 
         ws.onopen = function (evt) {
 
           // ws.send(JSON.stringify({ ticks: 'R_100' }));
 
           ws.send("Mike");
-          saida += "<br>OK<br>Recebendo dados...";
+          saida.innerHTML += "<br>OK<br>Recebendo dados...";
 
         };
 
         ws.onmessage = function (msg) {
           // var data = JSON.parse(msg.data);
           // console.log('ticks update: %o', data);
-          saida += "<br>OK<br>Dados recebidos: '" + msg.data + "'";
+          saida.innerHTML += "<br>OK<br>Dados recebidos: '" + msg.data + "'";
         };
 
       }
