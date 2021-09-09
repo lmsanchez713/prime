@@ -57,82 +57,46 @@
     </div>
   </header>
 
-  <div id="app">
+  <body>
 
-    <barra-superior></barra-superior>
+    <div id="div-saida"></div>
 
-    <my-checkbox></my-checkbox>
+    <script src="/js/jquery-3.6.0.js"></script>
+    <script src="/js/bootstrap.bundle.js"></script>
 
-    <span v-html="message"></span>
+    <script>
 
-  </div>
+      var ws;
+      var saida = document.getElementById("div-saida").innerHTML;
 
-  <script src="/js/jquery-3.6.0.js"></script>
-  <script src="/js/bootstrap.bundle.js"></script>
-  <script src="/js/vue.js"></script>
+      function inicializar() {
 
-  <script type="text/x-template" id="checkbox-template">
-    <div class="checkbox-wrapper" @click="check">
-      <div :class="{ checkbox: true, checked: checked }"></div>
-      <div class="title">{{ title }}</div>
-    </div>
-  </script>
+        saida += "<br>Iniciando conexão WebSockets com o servidor Pytão...";
 
-  <script>
+        ws = new WebSocket('wss://formatafacil.com.br:9713');
 
-    Vue.component('barra-superior', {
-      template: `<h1>BARRA SUPERIOR</h1>`
-    });
+        saida += "<br>OK<br>Trocando dados...<br>Enviando 'Lucas'";
 
-    Vue.component('my-checkbox', {
-      template: '#checkbox-template',
-      data() {
-        return { checked: false, title: 'Check me' }
-      },
-      methods: {
-        check() { this.checked = !this.checked; }
+        ws.onopen = function (evt) {
+
+          // ws.send(JSON.stringify({ ticks: 'R_100' }));
+
+          ws.send("Mike");
+          saida += "<br>OK<br>Recebendo dados...";
+
+        };
+
+        ws.onmessage = function (msg) {
+          // var data = JSON.parse(msg.data);
+          // console.log('ticks update: %o', data);
+          saida += "<br>OK<br>Dados recebidos: '" + msg.data + "'";
+        };
+
       }
-    });
 
-    var vueapp = new Vue({
-      el: '#app',
-      data: {
-        message: 'Mimes Pyramidal Broker v1.0.0.1 God Edition'
-      }
-    });
+      inicializar();
 
-    var ws;
-
-    function inicializar() {
-
-      saida = vueapp.message;
-
-      vueapp.message += "<br>Iniciando conexão WebSockets com o servidor Pytão...";
-
-      ws = new WebSocket('wss://formatafacil.com.br:9713');
-
-      vueapp.message += "<br>OK<br>Trocando dados...<br>Enviando 'Lucas'";
-
-      ws.onopen = function (evt) {
-
-        // ws.send(JSON.stringify({ ticks: 'R_100' }));
-
-        ws.send("Mike");
-        vueapp.message += "<br>OK<br>Recebendo dados...";
-
-      };
-
-      ws.onmessage = function (msg) {
-        // var data = JSON.parse(msg.data);
-        // console.log('ticks update: %o', data);
-        vueapp.message += "<br>OK<br>Dados recebidos: '" + msg.data + "'";
-      };
-
-    }
-
-    inicializar();
-
-  </script>
-</body>
+    </script>
+  </body>
 
 </html>
