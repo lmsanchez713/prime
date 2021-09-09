@@ -55,7 +55,7 @@
       visibility: hidden;
       opacity: 0;
       animation-duration: 1.5s;
-      animation-fill-mode: forwards;
+      /* animation-fill-mode: forwards; */
     }
 
     .form-signin {
@@ -90,7 +90,7 @@
           <form>
             <div class="card-title text-end">
               <span>
-                <button type="button" class="btn-close" aria-label="Fechar"></button>
+                <button type="button" class="btn-close" aria-label="Fechar" onclick="ocultar_popup_login()"></button>
               </span>
             </div>
 
@@ -182,7 +182,22 @@
 
       var wrapper = document.getElementById("wrapper-popup");
       wrapper.style.visibility = "visible";
+      wrapper.style.animationDirection = "normal";
+      wrapper.style.animationFillMode = "forwards";
       wrapper.style.animationName = "anim-fade-in";
+
+    }
+
+    function ocultar_popup_login() {
+
+      var wrapper = document.getElementById("wrapper-popup");
+      wrapper.style.animationDirection = "reverse";
+      wrapper.style.animationFillMode = "backwards";
+      wrapper.style.animationName = "anim-fade-in";
+      setTimeout(function () {
+        document.getElementById("wrapper-popup").style.visibility = "hidden";
+      }, 1500);
+
 
     }
 
