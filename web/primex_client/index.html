@@ -26,22 +26,12 @@
   <link rel="stylesheet" href="/css/bootstrap.css">
 
   <style>
-    /* html, body {
-      height: 100%;
-    } */
-
-    .bg-principal {
-      z-index: 0;
+    html {
       background: url("/img/rich-bg.svg") no-repeat center center fixed;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
-      height: 100vh;
-    }
-
-    .wrapper-principal {
-      z-index: 1;
     }
 
     #div-conteudo-principal {
@@ -57,56 +47,50 @@
 
 <body>
 
-    <header class="p-3 bg-dark text-white">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <img src="/img/illuminati.png" class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-            </img>
-          </a>
+  <header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <img src="/img/illuminati.png" class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+          </img>
+        </a>
 
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <!-- <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li> -->
-            <li><a href="#" class="nav-link px-2 text-white">Mimes Pyramidal Broker v1.0 God Edition</a></li>
-            <!-- <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li> -->
-            <!-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li> -->
-            <!-- <li><a href="#" class="nav-link px-2 text-white">About</a></li> -->
-          </ul>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <!-- <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li> -->
+          <li><a href="#" class="nav-link px-2 text-white">Mimes Pyramidal Broker v1.0 God Edition</a></li>
+          <!-- <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li> -->
+          <!-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li> -->
+          <!-- <li><a href="#" class="nav-link px-2 text-white">About</a></li> -->
+        </ul>
 
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-            <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-          </form>
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+        </form>
 
-          <div class="text-end">
-            <button type="button" class="btn btn-outline-light me-2">Login</button>
-            <button type="button" class="btn btn-warning">Sign-up</button>
-          </div>
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2">Login</button>
+          <button type="button" class="btn btn-warning">Sign-up</button>
         </div>
-      </div>
-    </header>
-    
-  <div class="bg-principal">TESTE</div>
-
-  <div class="wrapper-principal">
-
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8" id="div-conteudo-principal">
-          <div class="card">
-            <div class="card-body">
-              <!-- <h5 class="card-title"></h5> -->
-              <p class="card-text">
-              <div id="div-saida"></div>
-              </p>
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-2"></div>
       </div>
     </div>
+  </header>
 
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8" id="div-conteudo-principal">
+        <div class="card">
+          <div class="card-body">
+            <!-- <h5 class="card-title"></h5> -->
+            <p class="card-text">
+            <div id="div-saida"></div>
+            </p>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-2"></div>
+    </div>
   </div>
 
   <script src="/js/jquery-3.6.0.js"></script>
