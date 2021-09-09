@@ -74,6 +74,16 @@
         opacity: 1;
       }
     }
+    
+    @keyframes anim-fade-out {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
   </style>
 
 </head>
@@ -191,9 +201,9 @@
     function ocultar_popup_login() {
 
       var wrapper = document.getElementById("wrapper-popup");
-      wrapper.style.animationDirection = "reverse";
-      wrapper.style.animationFillMode = "backwards";
-      wrapper.style.animationName = "anim-fade-in";
+      // wrapper.style.animationDirection = "reverse";
+      // wrapper.style.animationFillMode = "backwards";
+      wrapper.style.animationName = "anim-fade-out";
       setTimeout(function () {
         document.getElementById("wrapper-popup").style.visibility = "hidden";
       }, 1500);
