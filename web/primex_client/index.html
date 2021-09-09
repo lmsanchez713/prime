@@ -55,16 +55,38 @@
         </div>
       </div>
     </div>
+
+    <style>
+      .conteudo-principal {
+        z-index: 1;
+      }
+
+      .plano-de-fundo-principal {
+        z-index: 0;
+        min-width: 100%;
+        min-height: 100%;
+        background-image: url("/img/rich-bg.svg");
+        background-attachment: fixed;
+        background-position: center;
+      }
+    </style>
+
   </header>
 
   <body>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-3" style="background-color: red;">1</div>
-        <div class="col-6" style="background-color: green;">2</div>
-        <div class="col-3" style="background-color: blue;">3</div>
+    <div class"plano-de-fundo-principal"></div>
+
+    <div class="conteudo-principal">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-3" style="background-color: red;">1</div>
+          <div class="col-6" style="background-color: green;">2</div>
+          <div class="col-3" style="background-color: blue;">3</div>
+        </div>
       </div>
+      
     </div>
 
     <div id="div-saida"></div>
