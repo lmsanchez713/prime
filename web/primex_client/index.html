@@ -25,108 +25,106 @@
 
   <link rel="stylesheet" href="/css/bootstrap.css">
 
+  <style>
+    .conteudo-principal {
+      z-index: 1;
+    }
+
+    .plano-de-fundo-principal {
+      z-index: 0;
+      min-width: 100%;
+      min-height: 100%;
+      background-image: url("/img/rich-bg.svg");
+      background-attachment: fixed;
+      background-position: center;
+    }
+  </style>
+
 </head>
 
 <body>
 
-  <header class="p-3 bg-dark text-white">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <img src="/img/illuminati.png" class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-          </img>
-        </a>
+  <div class"plano-de-fundo-principal">A</div>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <!-- <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li> -->
-          <li><a href="#" class="nav-link px-2 text-white">Mimes Pyramidal Broker v1.0 God Edition</a></li>
-          <!-- <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li> -->
-          <!-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li> -->
-          <!-- <li><a href="#" class="nav-link px-2 text-white">About</a></li> -->
-        </ul>
+  <div class="conteudo-principal">
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-        </form>
-
-        <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
-        </div>
-      </div>
-    </div>
-
-    <style>
-      .conteudo-principal {
-        z-index: 1;
-      }
-
-      .plano-de-fundo-principal {
-        z-index: 0;
-        min-width: 100%;
-        min-height: 100%;
-        background-image: url("/img/rich-bg.svg");
-        background-attachment: fixed;
-        background-position: center;
-      }
-    </style>
-
-  </header>
-
-  <body>
-
-    <div class"plano-de-fundo-principal">A</div>
-
-    <div class="conteudo-principal">
-
+    <header class="p-3 bg-dark text-white">
       <div class="container">
-        <div class="row">
-          <div class="col-3" style="background-color: red;">1</div>
-          <div class="col-6" style="background-color: green;">2</div>
-          <div class="col-3" style="background-color: blue;">3</div>
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <img src="/img/illuminati.png" class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+            </img>
+          </a>
+
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <!-- <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li> -->
+            <li><a href="#" class="nav-link px-2 text-white">Mimes Pyramidal Broker v1.0 God Edition</a></li>
+            <!-- <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li> -->
+            <!-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li> -->
+            <!-- <li><a href="#" class="nav-link px-2 text-white">About</a></li> -->
+          </ul>
+
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+            <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+          </form>
+
+          <div class="text-end">
+            <button type="button" class="btn btn-outline-light me-2">Login</button>
+            <button type="button" class="btn btn-warning">Sign-up</button>
+          </div>
         </div>
       </div>
 
-      <div id="div-saida"></div>
+    </header>
 
+    <div class="container">
+      <div class="row">
+        <div class="col-3" style="background-color: red;">1</div>
+        <div class="col-6" style="background-color: green;">2</div>
+        <div class="col-3" style="background-color: blue;">3</div>
+      </div>
     </div>
 
-    <script src="/js/jquery-3.6.0.js"></script>
-    <script src="/js/bootstrap.bundle.js"></script>
+    <div id="div-saida"></div>
 
-    <script>
+  </div>
 
-      var ws;
-      var saida = document.getElementById("div-saida");
+  <script src="/js/jquery-3.6.0.js"></script>
+  <script src="/js/bootstrap.bundle.js"></script>
 
-      function inicializar() {
+  <script>
 
-        saida.innerHTML += "<br>Iniciando conexão WebSockets com o servidor Pytão...";
+    var ws;
+    var saida = document.getElementById("div-saida");
 
-        ws = new WebSocket('wss://formatafacil.com.br:9713');
+    function inicializar() {
 
-        saida.innerHTML += "<br>OK<br>Trocando dados...<br>Enviando 'Lucas'";
+      saida.innerHTML += "<br>Iniciando conexão WebSockets com o servidor Pytão...";
 
-        ws.onopen = function (evt) {
+      ws = new WebSocket('wss://formatafacil.com.br:9713');
 
-          // ws.send(JSON.stringify({ ticks: 'R_100' }));
+      saida.innerHTML += "<br>OK<br>Trocando dados...<br>Enviando 'Lucas'";
 
-          ws.send("Mike");
-          saida.innerHTML += "<br>OK<br>Recebendo dados...";
+      ws.onopen = function (evt) {
 
-        };
+        // ws.send(JSON.stringify({ ticks: 'R_100' }));
 
-        ws.onmessage = function (msg) {
-          // var data = JSON.parse(msg.data);
-          // console.log('ticks update: %o', data);
-          saida.innerHTML += "<br>OK<br>Dados recebidos: '" + msg.data + "'";
-        };
+        ws.send("Mike");
+        saida.innerHTML += "<br>OK<br>Recebendo dados...";
 
-      }
+      };
 
-      inicializar();
+      ws.onmessage = function (msg) {
+        // var data = JSON.parse(msg.data);
+        // console.log('ticks update: %o', data);
+        saida.innerHTML += "<br>OK<br>Dados recebidos: '" + msg.data + "'";
+      };
 
-    </script>
-  </body>
+    }
+
+    inicializar();
+
+  </script>
+</body>
 
 </html>
