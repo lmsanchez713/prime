@@ -39,7 +39,7 @@
     }
 
     body {
-      background-color: transparent
+      background-color: transparent;
     }
 
     #wrapper-popup {
@@ -59,10 +59,10 @@
     }
 
     .form-signin {
-      width: 100%;
+      /* width: 100%; */
       max-width: 330px;
-      padding: 15px;
-      margin: auto;
+      /* padding: 15px; */
+      /* margin: auto; */
     }
 
     @keyframes anim-fade-in {
@@ -135,7 +135,7 @@
   </button> -->
 
   <div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="Popup de login" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered form-signin">
       <div class="modal-content">
         <div class="modal-header text-center">
           <img src="/img/illuminati.png" alt="" width="72" height="57">
@@ -149,13 +149,13 @@
           <!-- <main class="form-signin"> -->
           <!-- <div class="card"> -->
           <!-- <div class="card-body"> -->
-          <form>
-            <!-- <div class="card-title text-end">
+          <!-- <form>
+            <div class="card-title text-end">
                     <span>
                       <button type="button" class="btn-close" aria-label="Fechar"
                         onclick="ocultar_popup_login()"></button>
                     </span>
-                  </div> -->
+                  </div>
 
 
             <div class="form-floating">
@@ -175,7 +175,7 @@
             <button class="w-100 btn btn-lg btn-primary" type="submit">Fazer login</button>
             <button class="w-100 btn btn-lg btn-light" onclick="ocultar_popup_login()">Cancelar</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
-          </form>
+          </form> -->
           <!-- </div> -->
           <!-- </div> -->
           <!-- </main> -->
@@ -248,28 +248,27 @@
 
   <script>
 
-    function mostrar_popup_login() {
+    // function mostrar_popup_login() {
 
-      var wrapper = document.getElementById("wrapper-popup");
-      wrapper.style.visibility = "visible";
-      wrapper.style.animationDirection = "normal";
-      wrapper.style.animationFillMode = "forwards";
-      wrapper.style.animationName = "anim-fade-in";
+    //   var wrapper = document.getElementById("wrapper-popup");
+    //   wrapper.style.visibility = "visible";
+    //   wrapper.style.animationDirection = "normal";
+    //   wrapper.style.animationFillMode = "forwards";
+    //   wrapper.style.animationName = "anim-fade-in";
 
-    }
+    // }
 
-    function ocultar_popup_login() {
+    // function ocultar_popup_login() {
 
-      var wrapper = document.getElementById("wrapper-popup");
-      // wrapper.style.animationDirection = "reverse";
-      // wrapper.style.animationFillMode = "backwards";
-      wrapper.style.animationName = "anim-fade-out";
-      setTimeout(function () {
-        document.getElementById("wrapper-popup").style.visibility = "hidden";
-      }, 1500);
+    //   var wrapper = document.getElementById("wrapper-popup");
+    //   // wrapper.style.animationDirection = "reverse";
+    //   // wrapper.style.animationFillMode = "backwards";
+    //   wrapper.style.animationName = "anim-fade-out";
+    //   setTimeout(function () {
+    //     document.getElementById("wrapper-popup").style.visibility = "hidden";
+    //   }, 1500);
 
-
-    }
+    // }
 
     var ws;
     var saida = document.getElementById("div-saida");
