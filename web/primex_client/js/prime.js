@@ -25,7 +25,7 @@ var saida;
 
 function inicializar() {
 
-    document.getElementById("div-conteudo-principal").style.visibility = "visible";
+    // document.getElementById("div-conteudo-principal").style.visibility = "visible";
 
     saida = document.getElementById("div-saida");
 
