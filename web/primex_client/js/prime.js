@@ -25,6 +25,8 @@ var saida;
 
 function inicializar() {
 
+    document.getElementById("div-conteudo-principal").style.visibility = "visible";
+
     saida = document.getElementById("div-saida");
 
     saida.innerHTML += "Iniciando conexão WebSockets com o servidor Pytão...";
