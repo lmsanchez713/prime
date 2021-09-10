@@ -56,4 +56,8 @@ html {
       opacity: 0;
     }
   }
+
+  .popup-login-header {
+    border-bottom: none;
+  }
   
