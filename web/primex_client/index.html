@@ -16,7 +16,6 @@
   <meta property="og:description" content="Um aplicativo de corretagem de ativos.">
   <!-- <meta property="og:image" content="image.png"> -->
 
-  <!-- <link rel="icon" href="/favicon.ico"> -->
   <!-- <link rel="icon" href="/inferno.svg" type="image/svg+xml"> -->
   <link rel="icon" href="/img/illuminati.png" type="image/png">
   <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
@@ -31,50 +30,6 @@
 
 <body>
 
-
-
-  <!-- <div id="wrapper-popup" class="text-center">
-
-    <main class="form-signin">
-      <div class="card">
-        <div class="card-body">
-          <form>
-            <div class="card-title text-end">
-              <span>
-                <button type="button" class="btn-close" aria-label="Fechar" onclick="ocultar_popup_login()"></button>
-              </span>
-            </div>
-            <img class="mb-4" src="/img/illuminati.png" alt="" width="72" height="57">
-            <h1 class="h3 mb-3 fw-normal">Por favor faça login</h1>
-
-            <div class="form-floating">
-              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-              <label for="floatingInput">Usuário ou email</label>
-            </div>
-            <div class="form-floating">
-              <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-              <label for="floatingPassword">Senha</label>
-            </div>
-
-            <div class="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me"> Permanecer logado
-              </label>
-            </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Fazer login</button>
-            <button class="w-100 btn btn-lg btn-light" onclick="ocultar_popup_login()">Cancelar</button>
-            <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
-          </form>
-        </div>
-      </div>
-    </main>
-
-  </div> -->
-
-  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button> -->
-
   <div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="Popup de login" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered form-signin">
       <div class="modal-content">
@@ -84,16 +39,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-
-
-
-          <!-- <main class="form-signin"> -->
-          <!-- <div class="card"> -->
-          <!-- <div class="card-body"> -->
           <form>
-            <!-- <div class="card-title text-end"></div> -->
-
-
             <div class="form-floating">
               <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
               <label for="floatingInput">Usuário ou email</label>
@@ -110,28 +56,18 @@
             </div>
             <div class="text-center">
               <span>
-                <!-- <button class="w-100 btn btn-lg btn-primary" type="submit">Fazer login</button> -->
                 <button type="button" class="btn btn-primary w-100">Fazer login</button>
-                <!-- <button class="w-100 btn btn-lg btn-light" onclick="ocultar_popup_login()">Cancelar</button> -->
-                <!-- <button type="button" class="btn btn-secondary w-100 mt-2" data-bs-dismiss="modal">Cancelar</button> -->
               </span>
             </div>
-            <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p> -->
           </form>
-          <!-- </div> -->
-          <!-- </div> -->
-          <!-- </main> -->
-
-
-
         </div>
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div> -->
       </div>
     </div>
   </div>
+
+  <nav class="navbar navbar-dark bg-dark">
+    HEY!
+  </nav>
 
   <header class="p-3 bg-dark text-white">
     <div class="container">
@@ -154,9 +90,7 @@
         </form>
 
         <div class="text-end">
-          <!-- <button type="button" class="btn btn-outline-light me-2" onclick="mostrar_popup_login()">Login</button> -->
-          <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal"
-            data-bs-target="#modal-login">Login</button>
+          <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#modal-login">Login</button>
           <button type="button" class="btn btn-warning">Sign-up</button>
         </div>
       </div>
@@ -182,8 +116,6 @@
       <div class="col-2"></div>
     </div>
   </div>
-
-
 
   <script src="/js/jquery-3.6.0.js"></script>
   <script src="/js/bootstrap.bundle.js"></script>
