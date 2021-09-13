@@ -1,6 +1,3 @@
-var ws;
-var saida;
-
 // function mostrar_popup_login() {
 
 //   var wrapper = document.getElementById("wrapper-popup");
@@ -23,7 +20,22 @@ var saida;
 
 // }
 
+var ws;
+var saida;
+var contador_de_requisicoes = 0;
+var requisicoes = {};
+
+function enviar_requisicao(requisicao) {
+
+    alert(requisicao);
+
+}
+
 function inicializar() {
+
+    enviar_requisicao("Teste");
+
+    return;
 
     document.getElementById("div-conteudo-principal").style.visibility = "visible";
 
