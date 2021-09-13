@@ -25,7 +25,7 @@ var saida;
 var contador_de_requisicoes = 0;
 var requisicoes = {};
 
-function enviar_requisicao(requisicao) {
+function receber_requisicao(requisicao) {
 
     if(typeof requisicao === "string") {
 
@@ -43,8 +43,8 @@ function enviar_requisicao(requisicao) {
 
 function inicializar() {
 
-    enviar_requisicao({ "chave" : "valor" });
-    enviar_requisicao('{ "chave" : "valor" }');
+    receber_requisicao({ "chave" : "valor" });
+    receber_requisicao('{ "chave" : "valor" }');
 
     return;
 
