@@ -27,13 +27,22 @@ var requisicoes = {};
 
 function enviar_requisicao(requisicao) {
 
-    alert(requisicao);
+    console.log(requisicao);
+
+    if(typeof requisicao === "string") {
+
+        requisicao = JSON.parse(requisicao);
+
+    }
+
+    console.log(requisicao);
 
 }
 
 function inicializar() {
 
     enviar_requisicao({ "chave" : "valor" });
+    enviar_requisicao('{ "chave" : "valor" }');
 
     return;
 
