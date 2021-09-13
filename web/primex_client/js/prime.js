@@ -33,7 +33,7 @@ function enviar_requisicao(requisicao) {
 
 function inicializar() {
 
-    enviar_requisicao("Teste");
+    enviar_requisicao({ "chave" : "valor" });
 
     return;
 
