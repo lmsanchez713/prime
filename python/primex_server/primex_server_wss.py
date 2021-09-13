@@ -9,6 +9,9 @@ import websockets
 import sys
 # import pathlib
 import ssl
+import hashlib
+
+#hash = hashlib.sha512( str( "teste" ).encode("utf-8") ).hexdigest()
 
 async def ainput(string: str) -> str:
     # await asyncio.get_event_loop().run_in_executor(
@@ -17,6 +20,9 @@ async def ainput(string: str) -> str:
             None, sys.stdin.readline)
 
 async def hello(websocket, path):
+    callbacks = {}
+    # reqs = {}
+
     async for name in websocket:
         # name = await websocket.recv()
         print(f"< {name}")
@@ -45,7 +51,7 @@ async def main(parada, server_ws):
     parada.set_result(0)
     await server_ws
 
-print("Mimes Broker Server v1.0.0.666")
+print("Mimes Broker Server v1.0.0.0")
 print("Digite seu comando ou 'exit' para sair")
 
 loop = asyncio.get_event_loop()
