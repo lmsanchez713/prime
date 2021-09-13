@@ -27,15 +27,17 @@ var requisicoes = {};
 
 function enviar_requisicao(requisicao) {
 
-    console.log(requisicao);
-
     if(typeof requisicao === "string") {
 
         requisicao = JSON.parse(requisicao);
 
     }
 
-    console.log(requisicao);
+    if(typeof requisicao === "object") {
+
+        console.log(requisicao);
+
+    }
 
 }
 
