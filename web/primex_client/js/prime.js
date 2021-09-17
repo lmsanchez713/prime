@@ -1,41 +1,62 @@
-// function mostrar_popup_login() {
-
-//   var wrapper = document.getElementById("wrapper-popup");
-//   wrapper.style.visibility = "visible";
-//   wrapper.style.animationDirection = "normal";
-//   wrapper.style.animationFillMode = "forwards";
-//   wrapper.style.animationName = "anim-fade-in";
-
-// }
-
-// function ocultar_popup_login() {
-
-//   var wrapper = document.getElementById("wrapper-popup");
-//   // wrapper.style.animationDirection = "reverse";
-//   // wrapper.style.animationFillMode = "backwards";
-//   wrapper.style.animationName = "anim-fade-out";
-//   setTimeout(function () {
-//     document.getElementById("wrapper-popup").style.visibility = "hidden";
-//   }, 1500);
-
-// }
+function jsdump(arr, level) {
+    var dumped_text = "";
+    if (!level) level = 0;
+    var level_padding = "";
+    for (var j = 0; j < level + 1; j++) level_padding += "    ";
+    if (typeof (arr) == 'object') {
+        for (var item in arr) {
+            var value = arr[item];
+            if (typeof (value) == 'object') {
+                dumped_text += level_padding + "'" + item + "' ...\n";
+                dumped_text += mydump(value, level + 1);
+            }
+            else {
+                dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
+            }
+        }
+    }
+    else {
+        dumped_text = "===>" + arr + "<===(" + typeof (arr) + ")";
+    }
+    return dumped_text;
+}
 
 var ws;
 var saida;
 var contador_de_requisicoes = 0;
 var requisicoes = {};
 
-function receber_requisicao(requisicao) {
+function enviar_requisicao(requisicao) {
 
-    if(typeof requisicao === "string") {
+    if (typeof requisicao === "object") {//} && requisicao.hasOwnProperty("cmd")) {
 
-        requisicao = JSON.parse(requisicao);
+        requisicoes[contador_de_requisicoes] = requisicao;
+
+        requisicao["req_id"] = contador_de_requisicoes;
+
+        contador_de_requisicoes += 1;
+
+        requisicao = JSON.stringify(requisicao);
+
+        //se conectado, enviar; se não, adicionar req_id à fila de envio
+
+        jsdump(requisicoes);
 
     }
 
-    if(typeof requisicao === "object") {
+}
 
-        console.log(requisicao);
+function receber_requisicao(requisicao) {
+
+    if (typeof requisicao === "string") {
+
+        requisicao = JSON.parse(requisicao);
+
+        if (typeof requisicao === "object") {
+
+            console.log(requisicao);
+
+        }
 
     }
 
@@ -43,8 +64,8 @@ function receber_requisicao(requisicao) {
 
 function inicializar() {
 
-    receber_requisicao({ "chave" : "valor" });
-    receber_requisicao('{ "chave" : "valor" }');
+    enviar_requisicao({ "chave": "valor" });
+    enviar_requisicao({ "key": "value" });
 
     return;
 
@@ -68,9 +89,11 @@ function inicializar() {
     };
 
     ws.onmessage = function (msg) {
+
         // var data = JSON.parse(msg.data);
         // console.log('ticks update: %o', data);
         saida.innerHTML += "<br>OK<br>Dados recebidos: '" + msg.data + "'";
+
     };
 
 }
