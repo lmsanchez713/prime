@@ -8,7 +8,7 @@ function jsdump(arr, level) {
             var value = arr[item];
             if (typeof (value) == 'object') {
                 dumped_text += level_padding + "'" + item + "' ...\n";
-                dumped_text += mydump(value, level + 1);
+                dumped_text += jsdump(value, level + 1);
             }
             else {
                 dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
