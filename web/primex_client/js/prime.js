@@ -40,7 +40,7 @@ function enviar_requisicao(requisicao) {
 
         //se conectado, enviar; se não, adicionar req_id à fila de envio
 
-        jsdump(requisicoes);
+        console.log(jsdump(requisicoes));
 
     }
 
