@@ -10,6 +10,7 @@ import sys
 # import pathlib
 import ssl
 import hashlib
+import json
 
 #hash = hashlib.sha512( str( "teste" ).encode("utf-8") ).hexdigest()
 
@@ -20,17 +21,13 @@ async def ainput(string: str) -> str:
             None, sys.stdin.readline)
 
 async def hello(websocket, path):
-    callbacks = {}
-    # reqs = {}
+    async for mensagem in websocket:
+        requisicao = json.loads(mensagem)
 
-    async for name in websocket:
-        # name = await websocket.recv()
-        print(f"< {name}")
+        print(requisicao)
 
-        greeting = f"Hello {name}!"
-
-        await websocket.send(greeting)
-        print(f"> {greeting}")
+        await websocket.send("Hello!")
+        print("requisicao respondida")
 
 async def server_proc(parada, ssl_context):
     async with websockets.serve(hello, "140.82.31.140", 9713, ssl=ssl_context):# as websockets_server:
