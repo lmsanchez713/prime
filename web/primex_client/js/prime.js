@@ -64,8 +64,9 @@ function receber_requisicao(requisicao) {
 
 function inicializar() {
 
-    enviar_requisicao({ "chave": "valor" });
-    enviar_requisicao({ "key": "value" });
+    enviar_requisicao({ "criar_usuario": { "usuario":"lucas", "senha":"123456789" } });
+    enviar_requisicao({ "login": { "usuario":"lucas", "senha":"123456789" } });
+    enviar_requisicao({ "logout": "lucas" });
 
     return;
 
