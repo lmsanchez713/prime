@@ -40,8 +40,6 @@ function enviar_requisicao(requisicao) {
 
         //se conectado, enviar; se não, adicionar req_id à fila de envio
 
-        console.log(jsdump(requisicoes));
-
     }
 
 }
@@ -67,6 +65,8 @@ function inicializar() {
     enviar_requisicao({ "criar_usuario": { "usuario":"lucas", "senha":"123456789" } });
     enviar_requisicao({ "login": { "usuario":"lucas", "senha":"123456789" } });
     enviar_requisicao({ "logout": "lucas" });
+
+    console.log(jsdump(requisicoes));
 
     return;
 
