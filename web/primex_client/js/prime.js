@@ -93,7 +93,7 @@ function inicializar_websocket_principal() {
 
             setTimeout(() => {
                 inicializar_websocket_principal();
-            }, timeout);
+            }, 3000);
 
         }
 
