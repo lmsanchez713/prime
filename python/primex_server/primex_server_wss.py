@@ -15,10 +15,8 @@ import json
 #hash = hashlib.sha512( str( "teste" ).encode("utf-8") ).hexdigest()
 
 async def ainput(string: str) -> str:
-    # await asyncio.get_event_loop().run_in_executor(
-    #         None, lambda s=string: sys.stdout.write(s+' '))
-    return await asyncio.get_event_loop().run_in_executor(
-            None, sys.stdin.readline)
+    # await asyncio.get_event_loop().run_in_executor(None, lambda s=string: sys.stdout.write(s+' '))
+    return await asyncio.get_event_loop().run_in_executor(None, sys.stdin.readline)
 
 async def hello(websocket, path):
     async for mensagem in websocket:

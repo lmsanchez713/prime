@@ -21,10 +21,12 @@ function jsdump(arr, level) {
     return dumped_text;
 }
 
-var ws;
-var saida;
+var wss;
+
 var contador_de_requisicoes = 0;
 var requisicoes = {};
+
+var saida;
 
 function enviar_requisicao(requisicao) {
 
@@ -62,39 +64,65 @@ function receber_requisicao(requisicao) {
 
 function inicializar() {
 
-    enviar_requisicao({ "criar_usuario": { "usuario":"lucas", "senha":"123456789" } });
-    enviar_requisicao({ "login": { "usuario":"lucas", "senha":"123456789" } });
-    enviar_requisicao({ "logout": "lucas" });
-
-    console.log(jsdump(requisicoes));
-
-    return;
-
     document.getElementById("div-conteudo-principal").style.visibility = "visible";
 
     saida = document.getElementById("div-saida");
 
     saida.innerHTML += "Iniciando conexão WebSockets com o servidor Pytão...";
 
-    ws = new WebSocket('wss://formatafacil.com.br:9713');
+    wss = new WebSocket('wss://formatafacil.com.br:9713');
 
     saida.innerHTML += "<br>OK<br>Trocando dados...<br>Enviando 'Lucas'";
 
-    ws.onopen = function (evt) {
+    wss.onopen = function (evt) {
 
-        // ws.send(JSON.stringify({ ticks: 'R_100' }));
+        console.log("wss.onopen")
 
-        ws.send("Mike");
-        saida.innerHTML += "<br>OK<br>Recebendo dados...";
+        // wss.send(JSON.stringify({ ticks: 'R_100' }));
+
+        // wss.send("Mike");
+        // saida.innerHTML += "<br>OK<br>Recebendo dados...";
+
+        //puxar layout padrão do servidor
 
     };
 
-    ws.onmessage = function (msg) {
+    wss.onclose = function (evt) {
+
+        console.log("wss.onclose")
+
+        // wss.send(JSON.stringify({ ticks: 'R_100' }));
+
+        //agendar reconexão
+
+    };
+
+    wss.onerror = function (evt) {
+
+        console.log("wss.onerror")
+
+        // wss.send(JSON.stringify({ ticks: 'R_100' }));
+
+        //agendar reconexão ?
+
+    };
+
+    wss.onmessage = function (msg) {
+
+        console.log("wss.onmessage")
 
         // var data = JSON.parse(msg.data);
         // console.log('ticks update: %o', data);
-        saida.innerHTML += "<br>OK<br>Dados recebidos: '" + msg.data + "'";
+        // saida.innerHTML += "<br>OK<br>Dados recebidos: '" + msg.data + "'";
+
+        //processar mensagens; esse trecho
 
     };
+
+    enviar_requisicao({ "criar_usuario": { "usuario":"lucas", "senha":"123456789" } });
+    enviar_requisicao({ "login": { "usuario":"lucas", "senha":"123456789" } });
+    enviar_requisicao({ "logout": "lucas" });
+
+    console.log(jsdump(requisicoes));
 
 }
