@@ -160,5 +160,6 @@ function inicializar() {
     enviar_requisicao({ "logout": "lucas" });
 
     console.log(jsdump(requisicoes));
+    console.log(jsdump(fila_de_requisicoes_de_saida));
 
 }
