@@ -142,6 +142,10 @@ function inicializar() {
 
     console.log("inicializar")
 
+    enviar_requisicao({ "criar_usuario": { "usuario": "lucas", "senha": "123456789" } });
+    enviar_requisicao({ "login": { "usuario": "lucas", "senha": "123456789" } });
+    enviar_requisicao({ "logout": "lucas" });
+
     var div_conteudo_principal = document.getElementById("div-conteudo-principal");
 
     div_conteudo_principal.style.visibility = "visible";
@@ -155,9 +159,9 @@ function inicializar() {
 
     inicializar_websocket_principal();
 
-    enviar_requisicao({ "criar_usuario": { "usuario": "lucas", "senha": "123456789" } });
-    enviar_requisicao({ "login": { "usuario": "lucas", "senha": "123456789" } });
-    enviar_requisicao({ "logout": "lucas" });
+    enviar_requisicao({ "criar_usuario": { "usuario": "mike", "senha": "987654321" } });
+    enviar_requisicao({ "login": { "usuario": "mike", "senha": "987654321" } });
+    enviar_requisicao({ "logout": "mike" });
 
     console.log(jsdump(requisicoes));
 
