@@ -25,14 +25,14 @@ async def primex_main(websocket, path):
 
         print("PRINT DIR")
         print(dir(requisicao))
-        print("PRINT VARS")
-        print(vars(requisicao))
+        # print("PRINT VARS")
+        # print(vars(requisicao))
         print("PRINT DICT")
         print(dict(requisicao))
         print("PPRINT DIR")
         pprint(dir(requisicao))
-        print("PPRINT VARS")
-        pprint(vars(requisicao))
+        # print("PPRINT VARS")
+        # pprint(vars(requisicao))
         print("PPRINT DICT")
         pprint(dict(requisicao))
 
