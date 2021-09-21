@@ -66,20 +66,9 @@ function receber_requisicao(requisicao) {
 
 }
 
-function inicializar() {
-
-    var div_conteudo_principal = document.getElementById("div-conteudo-principal");
-
-    div_conteudo_principal.style.visibility = "visible";
-    div_conteudo_principal.style.opacity = 1;
-
-    saida = document.getElementById("div-saida");
-
-    saida.innerHTML += "Iniciando conexão WebSockets com o servidor Pytão...";
+function inicializar_websocket_principal() {
 
     wss = new WebSocket('wss://formatafacil.com.br:9713');
-
-    saida.innerHTML += "<br>OK<br>Trocando dados...<br>Enviando 'Lucas'";
 
     wss.onopen = function (evt) {
 
@@ -100,9 +89,11 @@ function inicializar() {
 
         // wss.send(JSON.stringify({ ticks: 'R_100' }));
 
-        if(manter_conexao_wss_aberta) {
+        if (manter_conexao_wss_aberta) {
 
-            //reagendar abertura da conexão
+            setTimeout(() => {
+                inicializar_websocket_principal();
+            }, timeout);
 
         }
 
@@ -122,8 +113,25 @@ function inicializar() {
 
     };
 
-    enviar_requisicao({ "criar_usuario": { "usuario":"lucas", "senha":"123456789" } });
-    enviar_requisicao({ "login": { "usuario":"lucas", "senha":"123456789" } });
+}
+
+function inicializar() {
+
+    var div_conteudo_principal = document.getElementById("div-conteudo-principal");
+
+    div_conteudo_principal.style.visibility = "visible";
+    div_conteudo_principal.style.opacity = 1;
+
+    saida = document.getElementById("div-saida");
+
+    saida.innerHTML += "Iniciando conexão WebSockets com o servidor Pytão...";
+
+    saida.innerHTML += "<br>OK<br>Trocando dados...<br>Enviando 'Lucas'";
+
+    inicializar_websocket_principal();
+
+    enviar_requisicao({ "criar_usuario": { "usuario": "lucas", "senha": "123456789" } });
+    enviar_requisicao({ "login": { "usuario": "lucas", "senha": "123456789" } });
     enviar_requisicao({ "logout": "lucas" });
 
     console.log(jsdump(requisicoes));
