@@ -22,13 +22,15 @@ function jsdump(arr, level) {
 }
 
 var wss;
-
+var manter_conexao_wss_aberta = true;
 var contador_de_requisicoes = 0;
 var requisicoes = {};
 
 var saida;
 
 function enviar_requisicao(requisicao) {
+
+    console.log("enviar_requisicao")
 
     if (typeof requisicao === "object") {//} && requisicao.hasOwnProperty("cmd")) {
 
@@ -48,6 +50,8 @@ function enviar_requisicao(requisicao) {
 
 function receber_requisicao(requisicao) {
 
+    console.log("receber_requisicao")
+
     if (typeof requisicao === "string") {
 
         requisicao = JSON.parse(requisicao);
@@ -64,7 +68,10 @@ function receber_requisicao(requisicao) {
 
 function inicializar() {
 
-    document.getElementById("div-conteudo-principal").style.visibility = "visible";
+    var div_conteudo_principal = document.getElementById("div-conteudo-principal");
+
+    div_conteudo_principal.style.visibility = "visible";
+    div_conteudo_principal.style.opacity = 1;
 
     saida = document.getElementById("div-saida");
 
@@ -93,19 +100,15 @@ function inicializar() {
 
         // wss.send(JSON.stringify({ ticks: 'R_100' }));
 
-        //agendar reconexão
+        if(manter_conexao_wss_aberta) {
+
+            //reagendar abertura da conexão
+
+        }
 
     };
 
-    wss.onerror = function (evt) {
-
-        console.log("wss.onerror")
-
-        // wss.send(JSON.stringify({ ticks: 'R_100' }));
-
-        //agendar reconexão ?
-
-    };
+    // wss.onerror = function (evt) {}; // processar erro...
 
     wss.onmessage = function (msg) {
 
