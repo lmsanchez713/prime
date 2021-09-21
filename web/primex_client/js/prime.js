@@ -68,6 +68,8 @@ function receber_requisicao(requisicao) {
 
 function inicializar_websocket_principal() {
 
+    console.log("inicializar_websocket_principal")
+
     wss = new WebSocket('wss://formatafacil.com.br:9713');
 
     wss.onopen = function (evt) {
@@ -116,6 +118,8 @@ function inicializar_websocket_principal() {
 }
 
 function inicializar() {
+
+    console.log("inicializar")
 
     var div_conteudo_principal = document.getElementById("div-conteudo-principal");
 
