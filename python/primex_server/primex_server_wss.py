@@ -2,7 +2,7 @@
 
 # WSS (WS over TLS) server example, with a self-signed certificate
 
-# start_server = websockets.serve(hello, "140.82.31.140", 9713, ssl=ssl_context)
+# start_server = websockets.serve(primex_main, "140.82.31.140", 9713, ssl=ssl_context)
 
 import asyncio
 import websockets
@@ -18,17 +18,18 @@ async def ainput(string: str) -> str:
     # await asyncio.get_event_loop().run_in_executor(None, lambda s=string: sys.stdout.write(s+' '))
     return await asyncio.get_event_loop().run_in_executor(None, sys.stdin.readline)
 
-async def hello(websocket, path):
+async def primex_main(websocket, path):
     async for mensagem in websocket:
         requisicao = json.loads(mensagem)
 
         print(requisicao)
 
-        await websocket.send("Hello!")
-        print("requisicao respondida")
+        resposta = '{{"req_id": {requisicao.req_id},"status":"erro","mensagem":"Servidor em manutenção"}}'
+        await websocket.send(resposta)
+        print("requisicao respondida: {resposta}")
 
 async def server_proc(parada, ssl_context):
-    async with websockets.serve(hello, "140.82.31.140", 9713, ssl=ssl_context):# as websockets_server:
+    async with websockets.serve(primex_main, "140.82.31.140", 9713, ssl=ssl_context):# as websockets_server:
         await parada
 
 async def main(parada, server_ws):
@@ -52,7 +53,7 @@ print("Digite seu comando ou 'exit' para sair")
 loop = asyncio.get_event_loop()
 # loop.set_debug(True)
 
-# start_server = websockets.serve(hello, "127.0.0.1", 9713)
+# start_server = websockets.serve(primex_main, "127.0.0.1", 9713)
 
 parada = loop.create_future()
 
