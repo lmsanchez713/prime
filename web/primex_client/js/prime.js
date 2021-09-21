@@ -25,6 +25,7 @@ var wss;
 var manter_conexao_wss_aberta = true;
 var contador_de_requisicoes = 0;
 var requisicoes = {};
+var fila_de_requisicoes_de_saida = [];
 
 var saida;
 
@@ -34,15 +35,26 @@ function enviar_requisicao(requisicao) {
 
     if (typeof requisicao === "object") {//} && requisicao.hasOwnProperty("cmd")) {
 
-        requisicoes[contador_de_requisicoes] = requisicao;
-
         requisicao["req_id"] = contador_de_requisicoes;
 
-        contador_de_requisicoes += 1;
+        requisicoes[contador_de_requisicoes] = requisicao;
 
         requisicao = JSON.stringify(requisicao);
 
         //se conectado, enviar; se não, adicionar req_id à fila de envio
+        if (wss.readyState == WebSocket.OPEN) {
+
+            wss.send(requisicao);
+
+        }
+
+        else {
+
+            fila_de_requisicoes_de_saida.push(contador_de_requisicoes);
+
+        }
+
+        contador_de_requisicoes += 1;
 
     }
 
@@ -58,7 +70,7 @@ function receber_requisicao(requisicao) {
 
         if (typeof requisicao === "object") {
 
-            console.log(requisicao);
+            console.log(jsdump(requisicao));
 
         }
 
@@ -80,6 +92,15 @@ function inicializar_websocket_principal() {
 
         // wss.send("Mike");
         // saida.innerHTML += "<br>OK<br>Recebendo dados...";
+
+        //enviar requisições pendentes
+        while (fila_de_requisicoes_de_saida.length) {
+
+            var req_id_atual = fila_de_requisicoes_de_saida.shift();
+
+            wss.send(JSON.stringify(requisicoes[req_id_atual]));
+
+        }
 
         //puxar layout padrão do servidor
 
