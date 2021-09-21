@@ -27,6 +27,8 @@ async def primex_main(websocket, path):
         requisicao = json.loads(mensagem)
 
         print(type(requisicao))
+        req_id = requisicao["req_id"]
+        print(req_id)
         # print("PRINT DIR")
         # print(dir(requisicao))
         # print("PRINT VARS")
