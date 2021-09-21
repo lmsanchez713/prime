@@ -11,6 +11,7 @@ import sys
 import ssl
 import hashlib
 import json
+import pprint
 
 #hash = hashlib.sha512( str( "teste" ).encode("utf-8") ).hexdigest()
 
@@ -22,8 +23,12 @@ async def primex_main(websocket, path):
     async for mensagem in websocket:
         requisicao = json.loads(mensagem)
 
-        print(vars(requisicao))
-        print(dict(requisicao))
+        print(dir("PRINT DIR" + requisicao))
+        print(vars("PRINT VARS" + requisicao))
+        print(dict("PRINT DICT" + requisicao))
+        pprint(dir("PPRINT DIR" + requisicao))
+        pprint(vars("PPRINT VARS" + requisicao))
+        pprint(dict("PPRINT DICT" + requisicao))
 
         resposta = '{{"req_id": {requisicao.req_id},"status":"erro","mensagem":"Servidor em manutenção"}}'
         await websocket.send(resposta)
