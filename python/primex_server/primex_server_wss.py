@@ -23,12 +23,12 @@ async def primex_main(websocket, path):
     async for mensagem in websocket:
         requisicao = json.loads(mensagem)
 
-        print(dir("PRINT DIR" + requisicao))
-        print(vars("PRINT VARS" + requisicao))
-        print(dict("PRINT DICT" + requisicao))
-        pprint(dir("PPRINT DIR" + requisicao))
-        pprint(vars("PPRINT VARS" + requisicao))
-        pprint(dict("PPRINT DICT" + requisicao))
+        print("PRINT DIR" + dir(requisicao))
+        print("PRINT VARS" + vars(requisicao))
+        print("PRINT DICT" + dict(requisicao))
+        pprint("PPRINT DIR" + dir(requisicao))
+        pprint("PPRINT VARS" + vars(requisicao))
+        pprint("PPRINT DICT" + dict(requisicao))
 
         resposta = '{{"req_id": {requisicao.req_id},"status":"erro","mensagem":"Servidor em manutenção"}}'
         await websocket.send(resposta)
