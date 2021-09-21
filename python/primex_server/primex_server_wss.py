@@ -24,9 +24,9 @@ async def primex_main(websocket, path):
 
         print(requisicao)
 
-        resposta = f'{{"req_id": {requisicao.req_id},"status":"erro","mensagem":"Servidor em manutenção"}}'
+        resposta = '{{"req_id": {requisicao.req_id},"status":"erro","mensagem":"Servidor em manutenção"}}'
         await websocket.send(resposta)
-        print(f"requisicao respondida: {resposta}")
+        print("requisicao respondida: {resposta}")
 
 async def server_proc(parada, ssl_context):
     async with websockets.serve(primex_main, "140.82.31.140", 9713, ssl=ssl_context):# as websockets_server:
