@@ -6,9 +6,11 @@ import sys
 import ssl
 import hashlib
 import json
+import mysql.connector
 
 #hash = hashlib.sha512( str( "teste" ).encode("utf-8") ).hexdigest()
 credenciais_mysql = {}
+
 
 async def ainput(string: str) -> str:
     # await asyncio.get_event_loop().run_in_executor(None, lambda s=string: sys.stdout.write(s+' '))
@@ -60,11 +62,15 @@ parada = loop.create_future()
 ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 # ssl_context.minimum_version = ssl.TLSVersion.TLSv1_3
 ssl_context.minimum_version = ssl.TLSVersion.MAXIMUM_SUPPORTED
-ssl_context.load_cert_chain("/var/www/certs/formatafacil.com.br/cert-chain.crt", "/var/www/certs/formatafacil.com.br/cert.key")
+ssl_context.load_cert_chain("/var/www/certs/formatafacil.com.br/cert-chain.crt",
+                            "/var/www/certs/formatafacil.com.br/cert.key")
 
 with open('/code/mysql.json', 'r') as arquivo_json_mysql:
     credenciais_mysql = json.load(arquivo_json_mysql)
     print(credenciais_mysql)
+    print(type(credenciais_mysql))
+    # mydb = mysql.connector.connect(host="localhost", user="yourusername", password="yourpassword")
+    # print(mydb)
 
 server_ws = loop.create_task(server_proc(parada, ssl_context))
 loop.run_until_complete(main(parada, server_ws))
