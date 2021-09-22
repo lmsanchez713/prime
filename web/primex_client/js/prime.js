@@ -64,11 +64,9 @@ function receber_requisicao(requisicao) {
 
     console.log("receber_requisicao");
 
-    console.log(typeof requisicao);
+    console.log(jsdump(requisicao));
 
     if (typeof requisicao === "string") {
-
-        requisicao = JSON.parse(requisicao);
 
         console.log(typeof requisicao);
 
@@ -128,7 +126,7 @@ function inicializar_websocket_principal() {
 
     // wss.onerror = function (evt) {}; // processar erro...
 
-    wss.onmessage = function (msg) {
+    wss.onmessage = function (mensagem) {
 
         console.log("wss.onmessage");
 
@@ -137,7 +135,10 @@ function inicializar_websocket_principal() {
         // saida.innerHTML += "<br>OK<br>Dados recebidos: '" + msg.data + "'";
 
         //processar mensagens
-        receber_requisicao(msg);
+        
+        console.log(jsdump(mensagem));
+
+        receber_requisicao(mensagem);
 
     };
 
