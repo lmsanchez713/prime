@@ -6,13 +6,14 @@ import sys
 import ssl
 import hashlib
 import json
-import pprint
 
 #hash = hashlib.sha512( str( "teste" ).encode("utf-8") ).hexdigest()
+credenciais_mysql = {}
 
 async def ainput(string: str) -> str:
     # await asyncio.get_event_loop().run_in_executor(None, lambda s=string: sys.stdout.write(s+' '))
     return await asyncio.get_event_loop().run_in_executor(None, sys.stdin.readline)
+
 
 async def primex_main(websocket, path):
     async for mensagem in websocket:
@@ -29,9 +30,12 @@ async def primex_main(websocket, path):
         await websocket.send(resposta)
         print(f"Requisição respondida: {resposta}")
 
+
 async def server_proc(parada, ssl_context):
-    async with websockets.serve(primex_main, "140.82.31.140", 9713, ssl=ssl_context):# as websockets_server:
+    # as websockets_server:
+    async with websockets.serve(primex_main, "140.82.31.140", 9713, ssl=ssl_context):
         await parada
+
 
 async def main(parada, server_ws):
     saida_solicitada = False
@@ -56,7 +60,12 @@ parada = loop.create_future()
 ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 # ssl_context.minimum_version = ssl.TLSVersion.TLSv1_3
 ssl_context.minimum_version = ssl.TLSVersion.MAXIMUM_SUPPORTED
-ssl_context.load_cert_chain("/var/www/certs/formatafacil.com.br/cert-chain.crt", "/var/www/certs/formatafacil.com.br/cert.key")
+ssl_context.load_cert_chain("/var/www/certs/formatafacil.com.br/cert-chain.crt",
+                            "/var/www/certs/formatafacil.com.br/cert.key")
+
+with open('/code/mysql.json', 'r') as arquivo_json_mysql:
+    credenciais_mysql = json.load(arquivo_json_mysql)
+    print(credenciais_mysql)
 
 server_ws = loop.create_task(server_proc(parada, ssl_context))
 loop.run_until_complete(main(parada, server_ws))
