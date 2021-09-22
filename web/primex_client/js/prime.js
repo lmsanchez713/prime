@@ -31,7 +31,7 @@ var saida;
 
 function enviar_requisicao(requisicao) {
 
-    console.log("enviar_requisicao")
+    console.log("enviar_requisicao");
 
     if (typeof requisicao === "object") {//} && requisicao.hasOwnProperty("cmd")) {
 
@@ -62,7 +62,7 @@ function enviar_requisicao(requisicao) {
 
 function receber_requisicao(requisicao) {
 
-    console.log("receber_requisicao")
+    console.log("receber_requisicao");
 
     if (typeof requisicao === "string") {
 
@@ -80,13 +80,13 @@ function receber_requisicao(requisicao) {
 
 function inicializar_websocket_principal() {
 
-    console.log("inicializar_websocket_principal")
+    console.log("inicializar_websocket_principal");
 
     wss = new WebSocket('wss://formatafacil.com.br:9713');
 
     wss.onopen = function (evt) {
 
-        console.log("wss.onopen")
+        console.log("wss.onopen");
 
         // wss.send(JSON.stringify({ ticks: 'R_100' }));
 
@@ -108,7 +108,7 @@ function inicializar_websocket_principal() {
 
     wss.onclose = function (evt) {
 
-        console.log("wss.onclose")
+        console.log("wss.onclose");
 
         // wss.send(JSON.stringify({ ticks: 'R_100' }));
 
@@ -126,13 +126,14 @@ function inicializar_websocket_principal() {
 
     wss.onmessage = function (msg) {
 
-        console.log("wss.onmessage")
+        console.log("wss.onmessage");
 
         // var data = JSON.parse(msg.data);
         // console.log('ticks update: %o', data);
         // saida.innerHTML += "<br>OK<br>Dados recebidos: '" + msg.data + "'";
 
-        //processar mensagens; esse trecho
+        //processar mensagens
+        receber_requisicao(msg);
 
     };
 
@@ -140,7 +141,7 @@ function inicializar_websocket_principal() {
 
 function inicializar() {
 
-    console.log("inicializar")
+    console.log("inicializar");
 
     var div_conteudo_principal = document.getElementById("div-conteudo-principal");
 
