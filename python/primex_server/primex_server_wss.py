@@ -60,8 +60,7 @@ parada = loop.create_future()
 ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 # ssl_context.minimum_version = ssl.TLSVersion.TLSv1_3
 ssl_context.minimum_version = ssl.TLSVersion.MAXIMUM_SUPPORTED
-ssl_context.load_cert_chain("/var/www/certs/formatafacil.com.br/cert-chain.crt",
-                            "/var/www/certs/formatafacil.com.br/cert.key")
+ssl_context.load_cert_chain("/var/www/certs/formatafacil.com.br/cert-chain.crt", "/var/www/certs/formatafacil.com.br/cert.key")
 
 with open('/code/mysql.json', 'r') as arquivo_json_mysql:
     credenciais_mysql = json.load(arquivo_json_mysql)
