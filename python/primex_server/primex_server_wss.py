@@ -19,6 +19,8 @@ async def primex_main(websocket, path):
 
         print("Processando requisição")
 
+        print(mensagem)
+
         requisicao = json.loads(mensagem)
 
         req_id = requisicao["req_id"]

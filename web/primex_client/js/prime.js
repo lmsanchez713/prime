@@ -31,7 +31,7 @@ var saida;
 
 function enviar_requisicao(requisicao) {
 
-    // console.log("enviar_requisicao");
+    console.log("enviar_requisicao");
 
     if (typeof requisicao === "object") {//} && requisicao.hasOwnProperty("cmd")) {
 
@@ -39,12 +39,12 @@ function enviar_requisicao(requisicao) {
 
         requisicoes[contador_de_requisicoes] = requisicao;
 
-        requisicao = JSON.stringify(requisicao);
+        console.log(jsdump(requisicao));
 
         //se conectado, enviar; se não, adicionar req_id à fila de envio
         if (wss.readyState == WebSocket.OPEN) {
 
-            wss.send(requisicao);
+            wss.send(JSON.stringify(requisicao));
 
         }
 
@@ -62,7 +62,7 @@ function enviar_requisicao(requisicao) {
 
 function receber_requisicao(requisicao) {
 
-    // console.log("receber_requisicao");
+    console.log("receber_requisicao");
 
     // console.log(jsdump(requisicao));
 
@@ -76,7 +76,7 @@ function receber_requisicao(requisicao) {
 
             // console.log(typeof requisicao["req_id"]);
 
-            // console.log(jsdump(requisicao));
+            console.log(jsdump(requisicao));
 
         }
 
