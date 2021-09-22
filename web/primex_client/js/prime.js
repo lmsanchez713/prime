@@ -145,6 +145,25 @@ function inicializar_websocket_principal() {
 
 }
 
+function fazer_login() {
+
+    var campo_login = document.getElementById("floatingInput");
+    var campo_senha = document.getElementById("floatingPassword");
+
+    if(true) {
+
+        enviar_requisicao({ "login": { "usuario": campo_login.value, "senha": campo_senha.value } });
+
+    }
+
+    else {
+
+        //
+        
+    }
+
+}
+
 function inicializar() {
 
     // console.log("inicializar");
