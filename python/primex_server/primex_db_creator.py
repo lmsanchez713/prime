@@ -10,4 +10,5 @@ with open('/code/mysql.json', 'r') as arquivo_json_mysql:
     mysql_cursor.execute("DROP DATABASE IF EXISTS primex;")
     mysql_cursor.execute("CREATE DATABASE primex;")
     mysql_cursor.execute("USE primex;")
-    mysql_cursor.execute("CREATE TABLE usuarios(id_usuario INT UNSIGNED PRIMARY KEY AUTO_INCREMENT);")
+    mysql_cursor.execute("CREATE TABLE usuarios(id_usuario INT UNSIGNED PRIMARY KEY AUTO_INCREMENT, " +
+                            "nome VARCHAR(128) NOT NULL, senha VARCHAR(128) NOT NULL);")
