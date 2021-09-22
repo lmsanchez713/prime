@@ -31,7 +31,7 @@ var saida;
 
 function enviar_requisicao(requisicao) {
 
-    console.log("enviar_requisicao");
+    // console.log("enviar_requisicao");
 
     if (typeof requisicao === "object") {//} && requisicao.hasOwnProperty("cmd")) {
 
@@ -62,11 +62,11 @@ function enviar_requisicao(requisicao) {
 
 function receber_requisicao(requisicao) {
 
-    console.log("receber_requisicao");
+    // console.log("receber_requisicao");
 
-    console.log(jsdump(requisicao));
+    // console.log(jsdump(requisicao));
 
-    console.log(typeof requisicao);
+    // console.log(typeof requisicao);
 
     if (typeof requisicao === "string") {
 
@@ -74,9 +74,9 @@ function receber_requisicao(requisicao) {
 
         if (typeof requisicao === "object") {
 
-            console.log(typeof requisicao["req_id"]);
+            // console.log(typeof requisicao["req_id"]);
 
-            console.log(jsdump(requisicao));
+            // console.log(jsdump(requisicao));
 
         }
 
@@ -86,13 +86,13 @@ function receber_requisicao(requisicao) {
 
 function inicializar_websocket_principal() {
 
-    console.log("inicializar_websocket_principal");
+    // console.log("inicializar_websocket_principal");
 
     wss = new WebSocket('wss://formatafacil.com.br:9713');
 
     wss.onopen = function (evt) {
 
-        console.log("wss.onopen");
+        // console.log("wss.onopen");
 
         // wss.send(JSON.stringify({ ticks: 'R_100' }));
 
@@ -114,7 +114,7 @@ function inicializar_websocket_principal() {
 
     wss.onclose = function (evt) {
 
-        console.log("wss.onclose");
+        // console.log("wss.onclose");
 
         // wss.send(JSON.stringify({ ticks: 'R_100' }));
 
@@ -132,7 +132,7 @@ function inicializar_websocket_principal() {
 
     wss.onmessage = function (mensagem) {
 
-        console.log("wss.onmessage");
+        // console.log("wss.onmessage");
 
         // var data = JSON.parse(msg.data);
         // console.log('ticks update: %o', data);
@@ -147,7 +147,7 @@ function inicializar_websocket_principal() {
 
 function inicializar() {
 
-    console.log("inicializar");
+    // console.log("inicializar");
 
     var div_conteudo_principal = document.getElementById("div-conteudo-principal");
 
@@ -166,7 +166,7 @@ function inicializar() {
     enviar_requisicao({ "login": { "usuario": "lucas", "senha": "123456789" } });
     enviar_requisicao({ "logout": "lucas" });
 
-    console.log(jsdump(requisicoes));
-    console.log(jsdump(fila_de_requisicoes_de_saida));
+    // console.log(jsdump(requisicoes));
+    // console.log(jsdump(fila_de_requisicoes_de_saida));
 
 }
