@@ -70,6 +70,8 @@ function receber_requisicao(requisicao) {
 
         console.log(typeof requisicao);
 
+        requisicao = JSON.parse(requisicao);
+
         if (typeof requisicao === "object") {
 
             console.log(jsdump(requisicao));
@@ -135,9 +137,6 @@ function inicializar_websocket_principal() {
         // saida.innerHTML += "<br>OK<br>Dados recebidos: '" + msg.data + "'";
 
         //processar mensagens
-        
-        console.log(jsdump(mensagem.data));
-
         receber_requisicao(mensagem.data);
 
     };
