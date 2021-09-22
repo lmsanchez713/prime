@@ -136,9 +136,9 @@ function inicializar_websocket_principal() {
 
         //processar mensagens
         
-        console.log(jsdump(mensagem));
+        console.log(jsdump(mensagem.data));
 
-        receber_requisicao(mensagem);
+        receber_requisicao(mensagem.data);
 
     };
 
