@@ -66,13 +66,15 @@ function receber_requisicao(requisicao) {
 
     console.log(jsdump(requisicao));
 
-    if (typeof requisicao === "string") {
+    console.log(typeof requisicao);
 
-        console.log(typeof requisicao);
+    if (typeof requisicao === "string") {
 
         requisicao = JSON.parse(requisicao);
 
         if (typeof requisicao === "object") {
+
+            console.log(typeof requisicao["req_id"]);
 
             console.log(jsdump(requisicao));
 
