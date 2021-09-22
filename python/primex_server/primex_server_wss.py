@@ -41,7 +41,7 @@ async def primex_main(websocket, path):
         # pprint(dict(requisicao))
 
         req_id = requisicao["req_id"]
-        resposta = f'{{"req_id": {req_id},"status":"erro","mensagem":"Servidor em manutenção"}}'
+        resposta = f'{{"req_id":{req_id},"status":"erro","mensagem":"Servidor em manutenção"}}'
         await websocket.send(resposta)
         print(f"requisicao respondida: {resposta}")
 

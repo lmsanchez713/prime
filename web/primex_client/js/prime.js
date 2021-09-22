@@ -64,9 +64,13 @@ function receber_requisicao(requisicao) {
 
     console.log("receber_requisicao");
 
+    console.log(typeof requisicao);
+
     if (typeof requisicao === "string") {
 
         requisicao = JSON.parse(requisicao);
+
+        console.log(typeof requisicao);
 
         if (typeof requisicao === "object") {
 
