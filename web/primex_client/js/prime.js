@@ -21,7 +21,7 @@ function jsdump(arr, level) {
     return dumped_text;
 }
 
-async function sha512(message) {
+async function async_sha512(message) {
     // encode as UTF-8
     const msgBuffer = new TextEncoder().encode(message);
 
@@ -167,7 +167,18 @@ function fazer_login() {
 
     if (true) {
 
-        enviar_requisicao({ "login": { "usuario": campo_login.value, "senha": campo_senha.value } });
+        sha512(campo_login.value).then(function (hash_usuario) {
+
+            console.log(hashlucas);
+            senha_com_sal = campo_senha.value + hash_usuario;
+
+            sha512(senha_com_sal).then(function (hash_senha) {
+
+                console.log(hash_senha);
+                enviar_requisicao({ "login": { "usuario": campo_login.value, "senha": hash_senha } });
+
+            });
+        });
 
     }
 
@@ -206,16 +217,5 @@ function inicializar() {
 
     // console.log(jsdump(requisicoes));
     // console.log(jsdump(fila_de_requisicoes_de_saida));
-
-    sha512("lucas").then(function (value) {
-        hashlucas = value;
-        saltedpass = "123456789" + hashlucas;
-        sha512(saltedpass).then(function (value) {
-            hashpass = value;
-            console.log(hashlucas);
-            console.log(saltedpass);
-            console.log(hashpass);
-        });
-    });
 
 }

@@ -27,8 +27,7 @@ import hashlib
 
 # asyncio.get_event_loop().run_until_complete(hello())
 
-hash = hashlib.sha512( str( "teste" ).encode("utf-8") )
-hashdig = hash.hexdigest()
-print(hash)
-print(hashdig)
-print(hash.digest())
+hashlucas = hashlib.sha512(str("lucas").encode("utf-8")).hexdigest()
+hashpass = hashlib.sha512(str("123456789" + hashlucas).encode("utf-8")).hexdigest()
+print(hashlucas)
+print(hashpass)
