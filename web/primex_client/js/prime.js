@@ -169,7 +169,7 @@ function fazer_login() {
 
         async_sha512(campo_login.value).then(function (hash_usuario) {
 
-            console.log(hashlucas);
+            console.log(hash_usuario);
             senha_com_sal = campo_senha.value + hash_usuario;
 
             async_sha512(senha_com_sal).then(function (hash_senha) {
