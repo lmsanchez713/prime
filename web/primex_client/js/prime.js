@@ -167,12 +167,12 @@ function fazer_login() {
 
     if (true) {
 
-        sha512(campo_login.value).then(function (hash_usuario) {
+        async_sha512(campo_login.value).then(function (hash_usuario) {
 
             console.log(hashlucas);
             senha_com_sal = campo_senha.value + hash_usuario;
 
-            sha512(senha_com_sal).then(function (hash_senha) {
+            async_sha512(senha_com_sal).then(function (hash_senha) {
 
                 console.log(hash_senha);
                 enviar_requisicao({ "login": { "usuario": campo_login.value, "senha": hash_senha } });
