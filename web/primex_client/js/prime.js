@@ -21,6 +21,21 @@ function jsdump(arr, level) {
     return dumped_text;
 }
 
+async function sha512(message) {
+    // encode as UTF-8
+    const msgBuffer = new TextEncoder().encode(message);                    
+
+    // hash the message
+    const hashBuffer = await crypto.subtle.digest('SHA-512', msgBuffer);
+
+    // convert ArrayBuffer to Array
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+    // convert bytes to hex string                  
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+}
+
 var wss;
 var manter_conexao_wss_aberta = true;
 var contador_de_requisicoes = 0;
@@ -187,5 +202,12 @@ function inicializar() {
 
     // console.log(jsdump(requisicoes));
     // console.log(jsdump(fila_de_requisicoes_de_saida));
+
+    var hashlucas = sha512("lucas");
+    var saltedpass = "123456789" + hashlucas;
+    var hashpass = sha512(saltedpass);
+    console.log(hashlucas);
+    console.log(saltedpass);
+    console.log(hashpass);
 
 }
