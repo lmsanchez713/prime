@@ -23,7 +23,7 @@ function jsdump(arr, level) {
 
 async function sha512(message) {
     // encode as UTF-8
-    const msgBuffer = new TextEncoder().encode(message);                    
+    const msgBuffer = new TextEncoder().encode(message);
 
     // hash the message
     const hashBuffer = await crypto.subtle.digest('SHA-512', msgBuffer);
@@ -165,7 +165,7 @@ function fazer_login() {
     var campo_login = document.getElementById("floatingInput");
     var campo_senha = document.getElementById("floatingPassword");
 
-    if(true) {
+    if (true) {
 
         enviar_requisicao({ "login": { "usuario": campo_login.value, "senha": campo_senha.value } });
 
@@ -174,10 +174,14 @@ function fazer_login() {
     else {
 
         //
-        
+
     }
 
 }
+
+var hashlucas;
+var saltedpass;
+var hashpass;
 
 function inicializar() {
 
@@ -203,13 +207,15 @@ function inicializar() {
     // console.log(jsdump(requisicoes));
     // console.log(jsdump(fila_de_requisicoes_de_saida));
 
-    var hashlucas;
-    sha512("lucas").then(function(value) { hashlucas = value; });
-    var saltedpass = "123456789" + hashlucas;
-    var hashpass;
-    sha512(saltedpass).then(function(value) { hashpass = value; });
-    console.log(hashlucas);
-    console.log(saltedpass);
-    console.log(hashpass);
+    sha512("lucas").then(function (value) {
+        hashlucas = value;
+        saltedpass = "123456789" + hashlucas;
+        sha512(saltedpass).then(function (value) {
+            hashpass = value;
+            console.log(hashlucas);
+            console.log(saltedpass);
+            console.log(hashpass);
+        });
+    });
 
 }
