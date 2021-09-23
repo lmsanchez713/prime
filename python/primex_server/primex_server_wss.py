@@ -67,10 +67,7 @@ ssl_context.load_cert_chain("/var/www/certs/formatafacil.com.br/cert-chain.crt",
 
 with open('/code/mysql.json', 'r') as arquivo_json_mysql:
     credenciais_mysql = json.load(arquivo_json_mysql)
-    print(credenciais_mysql)
-    print(type(credenciais_mysql))
     mysql_db = mysql.connector.connect(host="localhost", user=credenciais_mysql["usuario"], password=credenciais_mysql["senha"])
-    print(mysql_db)
 
 server_ws = loop.create_task(server_proc(parada, ssl_context))
 loop.run_until_complete(main(parada, server_ws))
