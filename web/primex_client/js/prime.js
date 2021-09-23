@@ -203,9 +203,11 @@ function inicializar() {
     // console.log(jsdump(requisicoes));
     // console.log(jsdump(fila_de_requisicoes_de_saida));
 
-    var hashlucas = sha512("lucas");
+    var hashlucas;
+    sha512("lucas").then(function(value) { hashlucas = value; });
     var saltedpass = "123456789" + hashlucas;
-    var hashpass = sha512(saltedpass);
+    var hashpass;
+    sha512(saltedpass).then(function(value) { hashpass = value; });
     console.log(hashlucas);
     console.log(saltedpass);
     console.log(hashpass);
