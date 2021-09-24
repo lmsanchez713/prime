@@ -79,17 +79,11 @@ function receber_requisicao(requisicao) {
 
     console.log("receber_requisicao");
 
-    // console.log(jsdump(requisicao));
-
-    // console.log(typeof requisicao);
-
     if (typeof requisicao === "string") {
 
         requisicao = JSON.parse(requisicao);
 
         if (typeof requisicao === "object") {
-
-            // console.log(typeof requisicao["req_id"]);
 
             console.log(jsdump(requisicao));
 
@@ -169,12 +163,10 @@ function fazer_login() {
 
         async_sha512(campo_login.value).then(function (hash_usuario) {
 
-            console.log(hash_usuario);
             senha_com_sal = campo_senha.value + hash_usuario;
 
             async_sha512(senha_com_sal).then(function (hash_senha) {
 
-                console.log(hash_senha);
                 enviar_requisicao({ "login": { "usuario": campo_login.value, "senha": hash_senha } });
 
             });
@@ -189,10 +181,6 @@ function fazer_login() {
     }
 
 }
-
-var hashlucas;
-var saltedpass;
-var hashpass;
 
 function inicializar() {
 
@@ -211,8 +199,18 @@ function inicializar() {
 
     inicializar_websocket_principal();
 
-    enviar_requisicao({ "criar_usuario": { "usuario": "lucas", "senha": "123456789" } });
-    enviar_requisicao({ "login": { "usuario": "lucas", "senha": "123456789" } });
+    enviar_requisicao({
+        "criar_usuario": {
+            "usuario": "lucas", "senha":
+                "d93eed61a9581944256d2c101012aa18f07a1901ca53a40a0f47d61a4fb12e5b60e3bee70966b406e274441df8eca4bf8fdd2871a3e2ae33ff35063d08ac807d"
+        }
+    });
+    enviar_requisicao({
+        "login": {
+            "usuario": "lucas", "senha":
+                "d93eed61a9581944256d2c101012aa18f07a1901ca53a40a0f47d61a4fb12e5b60e3bee70966b406e274441df8eca4bf8fdd2871a3e2ae33ff35063d08ac807d"
+        }
+    });
     enviar_requisicao({ "logout": "lucas" });
 
     // console.log(jsdump(requisicoes));
