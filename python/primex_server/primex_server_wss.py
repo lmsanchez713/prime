@@ -31,7 +31,12 @@ async def primex_main(websocket, path):
         req_id = requisicao.pop("req_id")
 
         for comando in requisicao.items():
-            print(comando)
+            if comando[0] == "login":
+                print("Login")
+            elif comando[0] == "logout":
+                print("Logout")
+            elif comando[0] == "criar_usuario":
+                print("Criar usuário")
 
         resposta = f'{{"req_id":{req_id},"status":"erro","mensagem":"Servidor em manutenção"}}'
 
