@@ -160,7 +160,7 @@ function fazer_login(cadastrar) {
     var campo_senha = document.getElementById("input-login-senha");
     var checkbox_lembrar = document.getElementById("input-login-lembrar");
 
-    console.log(checkbox_lembrar.value);
+    console.log(checkbox_lembrar.checked);
 
     if (true) {
 
