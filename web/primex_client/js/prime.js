@@ -160,9 +160,7 @@ function fazer_login(cadastrar) {
     var campo_senha = document.getElementById("input-login-senha");
     var checkbox_lembrar = document.getElementById("input-login-lembrar");
 
-    console.log(checkbox_lembrar.checked);
-
-    if (true) {
+    if ((campo_login.value.length > 0) && (campo_senha.value.length > 0)) {
 
         async_sha512(campo_login.value).then(function (hash_usuario) {
 
@@ -170,7 +168,11 @@ function fazer_login(cadastrar) {
 
             async_sha512(senha_com_sal).then(function (hash_senha) {
 
-                enviar_requisicao({ "login": { "usuario": campo_login.value, "senha": hash_senha } });
+                enviar_requisicao({
+                    "login": {
+                        "usuario": campo_login.value, "senha": hash_senha, "lembrar": checkbox_lembrar.checked
+                    }
+                });
 
             });
         });
@@ -179,7 +181,17 @@ function fazer_login(cadastrar) {
 
     else {
 
-        //
+        if (campo_login.value.length > 0) {
+
+            campo_login.classList.add("is-invalid");
+
+        }
+
+        if (campo_senha.value.length > 0) {
+
+            campo_senha.classList.add("is-invalid");
+
+        }
 
     }
 
