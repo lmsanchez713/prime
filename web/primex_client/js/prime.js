@@ -181,13 +181,13 @@ function fazer_login(cadastrar) {
 
     else {
 
-        if (campo_login.value.length > 0) {
+        if (campo_login.value.length == 0) {
 
             campo_login.classList.add("is-invalid");
 
         }
 
-        if (campo_senha.value.length > 0) {
+        if (campo_senha.value.length == 0) {
 
             campo_senha.classList.add("is-invalid");
 
