@@ -189,7 +189,7 @@ function fazer_login(cadastrar) {
             }
 
             campo_login.classList.add("is-invalid");
-            campo_login.addEventListener("input", remover_login_invalido);
+            campo_login.addEventListener("input", remover_status_login_invalido);
 
         }
 
