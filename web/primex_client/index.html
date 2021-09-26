@@ -36,7 +36,7 @@
 
         <div class="modal-header text-center popup-login-header">
           <img src="/img/illuminati.png" alt="" width="72" height="57">
-          <h2 class="h3 ms-auto me-auto mt-1 fw-normal">Por favor faça login</h2>
+          <h2 class="h3 ms-auto me-auto mt-1 fw-normal">Faça login ou cadastre-se</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
@@ -44,24 +44,30 @@
           <form>
 
             <div class="form-floating">
-              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-              <label for="floatingInput">Usuário ou email</label>
+              <input id="input-login-usuario" type="email" class="form-control" placeholder="name@example.com">
+              <label for="input-login-usuario">Usuário ou email</label>
             </div>
 
             <div class="form-floating">
-              <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-              <label for="floatingPassword">Senha</label>
+              <input id="input-login-senha" type="password" class="form-control" placeholder="Password">
+              <label for="input-login-senha">Senha</label>
             </div>
 
             <div class="checkbox mb-3 mt-3">
               <label>
-                <input type="checkbox" value="remember-me"> Permanecer logado
+                <input id="input-login-lembrar" type="checkbox" value="remember-me"> Permanecer logado
               </label>
             </div>
 
             <div class="text-center">
               <span>
-                <button type="button" class="btn btn-primary w-100" onclick="fazer_login();">Fazer login</button>
+                <button type="button" class="btn btn-primary w-100" onclick="fazer_login(false);">Fazer login</button>
+              </span>
+            </div>
+
+            <div class="text-center">
+              <span>
+                <button type="button" class="btn btn-primary w-100" onclick="fazer_login(true);">Cadastre-se</button>
               </span>
             </div>
 
@@ -99,7 +105,8 @@
         <div class="text-end">
           <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal"
             data-bs-target="#modal-login">Login</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
+          <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+            data-bs-target="#modal-login">Cadastro</button>
         </div>
 
       </div>
@@ -144,7 +151,7 @@
     // }
 
   </script>
-  
+
 </body>
 
 </html>

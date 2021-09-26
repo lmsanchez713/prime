@@ -8,6 +8,7 @@ import hashlib
 import json
 import mysql.connector
 
+
 #hash = hashlib.sha512( str( "teste" ).encode("utf-8") ).hexdigest()
 credenciais_mysql = {}
 
@@ -61,6 +62,7 @@ async def main(parada, server_ws):
     print("Encerrando servidor websockets")
     parada.set_result(0)
     await server_ws
+
 
 print("Mimes Broker Server v1.0.0.0")
 print("Digite seu comando ou 'exit' para sair")

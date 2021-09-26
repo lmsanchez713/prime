@@ -154,10 +154,13 @@ function inicializar_websocket_principal() {
 
 }
 
-function fazer_login() {
+function fazer_login(cadastrar) {
 
-    var campo_login = document.getElementById("floatingInput");
-    var campo_senha = document.getElementById("floatingPassword");
+    var campo_login = document.getElementById("input-login-usuario");
+    var campo_senha = document.getElementById("input-login-senha");
+    var checkbox_lembrar = document.getElementById("input-login-lembrar");
+
+    console.log(checkbox_lembrar.value);
 
     if (true) {
 
