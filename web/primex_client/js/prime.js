@@ -253,6 +253,8 @@ function inicializar() {
 
     modal_login.addEventListener('hidden.bs.modal', function () {
         reportar_login("");
+        document.getElementById("input-login-usuario").value = "";
+        document.getElementById("input-login-senha").value = "";
       });
 
     var div_conteudo_principal = document.getElementById("div-conteudo-principal");
