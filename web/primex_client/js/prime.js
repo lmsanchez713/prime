@@ -249,7 +249,7 @@ function inicializar() {
 
 }
 
-$(document).on('hide.bs.modal','#modal-login', function () {
+$("#modal-login").on('hidden', function () {
     remover_status_login_invalido();
     remover_status_senha_invalida();
     alert("HEY");
