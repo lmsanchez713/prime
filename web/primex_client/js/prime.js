@@ -211,6 +211,8 @@ function fazer_login(cadastrar) {
 
     }
 
+    document.getElementById("report-login").innerHTML = "HEY!";
+
 }
 
 function inicializar() {
