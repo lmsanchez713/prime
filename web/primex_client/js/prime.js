@@ -252,7 +252,7 @@ function inicializar() {
     var modal_login = document.getElementById('modal-login');
 
     modal_login.addEventListener('hidden.bs.modal', function () {
-        alert("HEY!");
+        reportar_login("");
       });
 
     var div_conteudo_principal = document.getElementById("div-conteudo-principal");
