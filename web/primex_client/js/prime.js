@@ -244,3 +244,8 @@ function inicializar() {
     // console.log(jsdump(fila_de_requisicoes_de_saida));
 
 }
+
+$("#modal-login").on('hide.bs.modal', function () {
+    remover_status_login_invalido();
+    remover_status_senha_invalida();
+});
