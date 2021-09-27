@@ -157,8 +157,20 @@ function inicializar_websocket_principal() {
 function reportar_login(mensagem) {
 
     var report_login = document.getElementById("report-login");
-    report_login.innerHTML = mensagem;
-    report_login.style.display = "block";
+
+    if (mensagem.length) {
+
+        report_login.innerHTML = mensagem;
+        report_login.style.display = "block";
+
+    }
+
+    else {
+
+        report_login.innerHTML = "";
+        report_login.style.display = "none";
+
+    }
 
 }
 
