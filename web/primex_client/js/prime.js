@@ -212,6 +212,7 @@ function fazer_login(cadastrar) {
     }
 
     document.getElementById("report-login").innerHTML = "HEY!";
+    document.getElementById("report-login").style.opacity = 1;
 
 }
 
