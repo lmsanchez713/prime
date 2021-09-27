@@ -249,8 +249,8 @@ function inicializar() {
 
 }
 
-$("#modal-login").on('hidden', function () {
-    remover_status_login_invalido();
-    remover_status_senha_invalida();
-    alert("HEY");
-});
+// $("#modal-login").on('hidden', function () {
+//     remover_status_login_invalido();
+//     remover_status_senha_invalida();
+//     alert("HEY");
+// });
