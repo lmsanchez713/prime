@@ -47,5 +47,7 @@ body {
   /* display: none; */
   height: 0px;
   opacity: 0;
+  padding: 0;
+  margin-bottom: 0;
   transition: height 1s, opacity 1s;
 }
