@@ -191,7 +191,7 @@ function fazer_login(cadastrar) {
             campo_login.classList.add("is-invalid");
             campo_login.addEventListener("input", remover_status_login_invalido);
 
-            setTimeout(remover_status_login_invalido, 3000);
+            // setTimeout(remover_status_login_invalido, 3000);
 
         }
 
@@ -205,7 +205,7 @@ function fazer_login(cadastrar) {
             campo_senha.classList.add("is-invalid");
             campo_senha.addEventListener("input", remover_status_senha_invalida);
 
-            setTimeout(remover_status_senha_invalida, 3000);
+            // setTimeout(remover_status_senha_invalida, 3000);
 
         }
 
@@ -249,7 +249,7 @@ function inicializar() {
 
 }
 
-// $("#modal-login").on('hidden.bs.modal', function () {
-//     remover_status_login_invalido();
-//     remover_status_senha_invalida();
-// });
+$("#modal-login").on('hidden.bs.modal', function () {
+    remover_status_login_invalido();
+    remover_status_senha_invalida();
+});
