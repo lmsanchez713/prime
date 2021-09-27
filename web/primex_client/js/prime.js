@@ -183,13 +183,13 @@ function fazer_login(cadastrar) {
 
         if (campo_login.value.length == 0) {
 
-            function remover_status_login_invalido() {
-                campo_login.classList.remove("is-invalid");
-                campo_login.removeEventListener("input", remover_status_login_invalido);
-            }
+            // function remover_status_login_invalido() {
+            //     campo_login.classList.remove("is-invalid");
+            //     campo_login.removeEventListener("input", remover_status_login_invalido);
+            // }
 
-            campo_login.classList.add("is-invalid");
-            campo_login.addEventListener("input", remover_status_login_invalido);
+            // campo_login.classList.add("is-invalid");
+            // campo_login.addEventListener("input", remover_status_login_invalido);
 
             // setTimeout(remover_status_login_invalido, 3000);
 
@@ -197,13 +197,13 @@ function fazer_login(cadastrar) {
 
         if (campo_senha.value.length == 0) {
 
-            function remover_status_senha_invalida() {
-                campo_senha.classList.remove("is-invalid");
-                campo_senha.removeEventListener("input", remover_status_senha_invalida);
-            }
+            // function remover_status_senha_invalida() {
+            //     campo_senha.classList.remove("is-invalid");
+            //     campo_senha.removeEventListener("input", remover_status_senha_invalida);
+            // }
 
-            campo_senha.classList.add("is-invalid");
-            campo_senha.addEventListener("input", remover_status_senha_invalida);
+            // campo_senha.classList.add("is-invalid");
+            // campo_senha.addEventListener("input", remover_status_senha_invalida);
 
             // setTimeout(remover_status_senha_invalida, 3000);
 
