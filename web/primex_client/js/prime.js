@@ -154,6 +154,14 @@ function inicializar_websocket_principal() {
 
 }
 
+function reportar_login(mensagem) {
+
+    var report_login = document.getElementById("report-login");
+    report_login.innerHTML = mensagem;
+    report_login.style.display = "block";
+
+}
+
 function fazer_login(cadastrar) {
 
     var campo_login = document.getElementById("input-login-usuario");
@@ -181,7 +189,13 @@ function fazer_login(cadastrar) {
 
     else {
 
-        if (campo_login.value.length == 0) {
+        if ((campo_login.value.length == 0) && (campo_senha.value.length == 0)) {
+
+            reportar_login("Campos usuário e senha não podem ser vazios");
+
+        }
+
+        else if (campo_login.value.length == 0) {
 
             // function remover_status_login_invalido() {
             //     campo_login.classList.remove("is-invalid");
@@ -193,9 +207,11 @@ function fazer_login(cadastrar) {
 
             // setTimeout(remover_status_login_invalido, 3000);
 
+            reportar_login("Campo usuário não pode ser vazio");
+
         }
 
-        if (campo_senha.value.length == 0) {
+        else if (campo_senha.value.length == 0) {
 
             // function remover_status_senha_invalida() {
             //     campo_senha.classList.remove("is-invalid");
@@ -207,13 +223,11 @@ function fazer_login(cadastrar) {
 
             // setTimeout(remover_status_senha_invalida, 3000);
 
+            reportar_login("Campo senha não pode ser vazio");
+
         }
 
     }
-
-    document.getElementById("report-login").innerHTML = "HEY!";
-    document.getElementById("report-login").style.display = "block";
-    document.getElementById("report-login").style.opacity = 1;
 
 }
 
