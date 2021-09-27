@@ -245,7 +245,7 @@ function inicializar() {
 
 }
 
-$("#modal-login").on('hide.bs.modal', function () {
+$("#modal-login").on('hidden.bs.modal', function () {
     remover_status_login_invalido();
     remover_status_senha_invalida();
 });
