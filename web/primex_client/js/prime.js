@@ -249,6 +249,12 @@ function inicializar() {
 
     // console.log("inicializar");
 
+    var modal_login = document.getElementById('modal-login');
+
+    modal_login.addEventListener('hidden.bs.modal', function () {
+        alert("HEY!");
+      });
+
     var div_conteudo_principal = document.getElementById("div-conteudo-principal");
 
     div_conteudo_principal.style.visibility = "visible";
