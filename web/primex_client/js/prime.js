@@ -252,4 +252,5 @@ function inicializar() {
 $("#modal-login").on('hidden.bs.modal', function () {
     remover_status_login_invalido();
     remover_status_senha_invalida();
+    alert("HEY");
 });
