@@ -43,4 +43,8 @@ body {
   border-bottom: none;
 }
 
-/* #report-login {} */
+#report-login {
+  height: 0px;
+  opacity: 0;
+  transition: height 1s, opacity 1s;
+}
