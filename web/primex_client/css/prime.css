@@ -1,22 +1,22 @@
 html {
-    background: url("/img/rich-bg.svg") no-repeat center top fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
+  background: url("/img/rich-bg.svg") no-repeat center top fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
-  #div-conteudo-principal {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 1s, height 1s;
-  }
+#div-conteudo-principal {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1s, height 1s;
+}
 
-  body {
-    background-color: transparent;
-  }
+body {
+  background-color: transparent;
+}
 
-  /* #wrapper-popup {
+/* #wrapper-popup {
     z-index: 1;
     position: fixed;
     width: 100%;
@@ -32,37 +32,15 @@ html {
     animation-fill-mode: forwards;
   } */
 
-  .form-signin {
-    /* width: 100%; */
-    max-width: 400px;
-    /* padding: 15px; */
-    /* margin: auto; */
-  }
+.form-signin {
+  /* width: 100%; */
+  max-width: 400px;
+  /* padding: 15px; */
+  /* margin: auto; */
+}
 
-  @keyframes anim-fade-in {
-    0% {
-      opacity: 0;
-    }
+.popup-login-header {
+  border-bottom: none;
+}
 
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes anim-fade-out {
-    0% {
-      opacity: 1;
-    }
-
-    100% {
-      opacity: 0;
-    }
-  }
-
-  .popup-login-header {
-    border-bottom: none;
-  }
-  
-  /* * {
-    transition: width 1s, height 1s, opacity 1s;
-  } */
+/* #report-login {} */
