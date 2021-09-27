@@ -182,6 +182,8 @@ function fazer_login(cadastrar) {
 
     if ((campo_login.value.length > 0) && (campo_senha.value.length > 0)) {
 
+        reportar_login("");
+
         async_sha512(campo_login.value).then(function (hash_usuario) {
 
             senha_com_sal = campo_senha.value + hash_usuario;
