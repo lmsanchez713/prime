@@ -44,10 +44,7 @@ body {
 }
 
 #report-login {
-  /* display: none; */
-  /* height: 0px; */
+  display: none;
   opacity: 0;
-  padding: 0;
-  margin-bottom: 0;
-  transition: height 1s, opacity 1s;
+  transition: opacity 1s;
 }
