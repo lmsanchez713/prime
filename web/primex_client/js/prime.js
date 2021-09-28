@@ -179,8 +179,18 @@ function fazer_login(cadastrar) {
     var campo_login = document.getElementById("input-login-usuario");
     var campo_senha = document.getElementById("input-login-senha");
     var checkbox_lembrar = document.getElementById("input-login-lembrar");
+    var botao_login = document.getElementById("botao-login");
+    var botao_cadastro = document.getElementById("botao-cadastro");
 
     if ((campo_login.value.length > 0) && (campo_senha.value.length > 0)) {
+
+        campo_login.setAttribute("disabled", "");
+        campo_senha.setAttribute("disabled", "");
+        checkbox_lembrar.setAttribute("disabled", "");
+        botao_login.setAttribute("disabled", "");
+        botao_cadastro.setAttribute("disabled", "");
+        if(!cadastrar) botao_login.innerHTML = '<span class="spinner-border" role="status"></span> Fazendo login...';
+        else botao_cadastro.innerHTML = '<span class="spinner-border" role="status"></span> Cadastrando...';
 
         reportar_login("");
 
@@ -190,11 +200,21 @@ function fazer_login(cadastrar) {
 
             async_sha512(senha_com_sal).then(function (hash_senha) {
 
-                enviar_requisicao({
-                    "login": {
-                        "usuario": campo_login.value, "senha": hash_senha, "lembrar": checkbox_lembrar.checked
-                    }
-                });
+                if (!cadastrar) {
+
+                    enviar_requisicao({
+                        "login": {
+                            "usuario": campo_login.value, "senha": hash_senha, "lembrar": checkbox_lembrar.checked
+                        }
+                    });
+
+                }
+
+                else {
+
+                    //
+
+                }
 
             });
         });
@@ -255,7 +275,7 @@ function inicializar() {
         reportar_login("");
         document.getElementById("input-login-usuario").value = "";
         document.getElementById("input-login-senha").value = "";
-      });
+    });
 
     var div_conteudo_principal = document.getElementById("div-conteudo-principal");
 
