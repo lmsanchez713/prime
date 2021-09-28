@@ -189,8 +189,8 @@ function fazer_login(cadastrar) {
         checkbox_lembrar.setAttribute("disabled", "");
         botao_login.setAttribute("disabled", "");
         botao_cadastro.setAttribute("disabled", "");
-        if(!cadastrar) botao_login.innerHTML = '<span class="spinner-border" role="status"></span> Fazendo login...';
-        else botao_cadastro.innerHTML = '<span class="spinner-border" role="status"></span> Cadastrando...';
+        if(!cadastrar) botao_login.innerHTML = '<span class="spinner-border-sm" role="status"></span> Fazendo login...';
+        else botao_cadastro.innerHTML = '<span class="spinner-border-sm" role="status"></span> Cadastrando...';
 
         reportar_login("");
 
