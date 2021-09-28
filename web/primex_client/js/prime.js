@@ -174,8 +174,15 @@ function reportar_login(mensagem) {
 
 }
 
+function resetar_form_login() {
+
+    //
+
+}
+
 function fazer_login(cadastrar) {
 
+    var modal_login = document.getElementById("modal-login");
     var campo_login = document.getElementById("input-login-usuario");
     var campo_senha = document.getElementById("input-login-senha");
     var checkbox_lembrar = document.getElementById("input-login-lembrar");
@@ -184,12 +191,14 @@ function fazer_login(cadastrar) {
 
     if ((campo_login.value.length > 0) && (campo_senha.value.length > 0)) {
 
+        modal_login.setAttribute("data-bs-backdrop", "static");
+        modal_login.setAttribute("data-bs-keyboard", "false");
         campo_login.setAttribute("disabled", "");
         campo_senha.setAttribute("disabled", "");
         checkbox_lembrar.setAttribute("disabled", "");
         botao_login.setAttribute("disabled", "");
         botao_cadastro.setAttribute("disabled", "");
-        if(!cadastrar) botao_login.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Fazendo login...';
+        if (!cadastrar) botao_login.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Fazendo login...';
         else botao_cadastro.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Cadastrando...';
 
         reportar_login("");
