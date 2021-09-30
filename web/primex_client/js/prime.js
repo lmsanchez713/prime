@@ -310,7 +310,7 @@ function inicializar() {
 
     modal_login.addEventListener('hidden.bs.modal', function () {
 
-        if (requisicao_de_login) resetar_form_login();
+        if (requisicao_de_login == 0) resetar_form_login();
 
     });
 
