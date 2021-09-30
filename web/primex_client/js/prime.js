@@ -239,7 +239,7 @@ function fazer_login(cadastrar) {
 
                 if (!cadastrar) {
 
-                    enviar_requisicao({
+                    requisicao_de_login = enviar_requisicao({
                         "login": {
                             "usuario": campo_login.value, "senha": hash_senha, "lembrar": checkbox_lembrar.checked
                         }
@@ -249,7 +249,11 @@ function fazer_login(cadastrar) {
 
                 else {
 
-                    //
+                    requisicao_de_login = enviar_requisicao({
+                        "criar_usuario": {
+                            "usuario": campo_login.value, "senha": hash_senha, "lembrar": checkbox_lembrar.checked
+                        }
+                    });
 
                 }
 
