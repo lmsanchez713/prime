@@ -39,7 +39,9 @@ async def primex_main(websocket, path):
             elif comando[0] == "criar_usuario":
                 print("Criar usuário")
 
-        resposta = f'{{"req_id":{req_id},"status":"erro","mensagem":"Servidor em manutenção"}}'
+        cmd = comando[0]
+
+        resposta = f'{{"req_id":{req_id},"{cmd}":{{"status":"erro","mensagem":"Servidor em manutenção"}}}}'
 
         await websocket.send(resposta)
         print(f"Requisição respondida: {resposta}")
