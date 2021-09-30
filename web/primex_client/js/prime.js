@@ -41,6 +41,7 @@ var manter_conexao_wss_aberta = true;
 var contador_de_requisicoes = 0;
 var requisicoes = {};
 var fila_de_requisicoes_de_saida = [];
+var requisicao_de_login = 0;
 
 var saida;
 
@@ -49,6 +50,8 @@ function enviar_requisicao(requisicao) {
     console.log("enviar_requisicao");
 
     if (typeof requisicao === "object") {//} && requisicao.hasOwnProperty("cmd")) {
+
+        contador_de_requisicoes += 1;
 
         requisicao["req_id"] = contador_de_requisicoes;
 
@@ -69,9 +72,11 @@ function enviar_requisicao(requisicao) {
 
         }
 
-        contador_de_requisicoes += 1;
+        return contador_de_requisicoes;
 
     }
+
+    return 0;
 
 }
 
@@ -87,9 +92,14 @@ function receber_requisicao(requisicao) {
 
             console.log(jsdump(requisicao));
 
+            //return req_id
+            return 0;
+
         }
 
     }
+
+    return 0;
 
 }
 
@@ -176,13 +186,31 @@ function reportar_login(mensagem) {
 
 function resetar_form_login() {
 
-    //
+    var campo_login = document.getElementById("input-login-usuario");
+    var campo_senha = document.getElementById("input-login-senha");
+    var checkbox_lembrar = document.getElementById("input-login-lembrar");
+    var botao_login = document.getElementById("botao-login");
+    var botao_cadastro = document.getElementById("botao-cadastro");
+
+    campo_login.value = "";
+    campo_senha.value = "";
+    checkbox_lembrar.checked = false;
+    botao_login.innerHTML = "Fazer login";
+    botao_cadastro.innerHTML = "Cadastre-se";
+
+    campo_login.removeAttribute("disabled");
+    campo_senha.removeAttribute("disabled");
+    checkbox_lembrar.removeAttribute("disabled");
+    botao_login.removeAttribute("disabled");
+    botao_cadastro.removeAttribute("disabled");
+
+    reportar_login("");
 
 }
 
 function fazer_login(cadastrar) {
 
-    var modal_login = document.getElementById("modal-login");
+    // var modal_login = document.getElementById("modal-login");
     var campo_login = document.getElementById("input-login-usuario");
     var campo_senha = document.getElementById("input-login-senha");
     var checkbox_lembrar = document.getElementById("input-login-lembrar");
@@ -191,8 +219,8 @@ function fazer_login(cadastrar) {
 
     if ((campo_login.value.length > 0) && (campo_senha.value.length > 0)) {
 
-        modal_login.setAttribute("data-bs-backdrop", "static");
-        modal_login.setAttribute("data-bs-keyboard", "false");
+        // modal_login.setAttribute("data-bs-backdrop", "static");
+        // modal_login.setAttribute("data-bs-keyboard", "false");
         campo_login.setAttribute("disabled", "");
         campo_senha.setAttribute("disabled", "");
         checkbox_lembrar.setAttribute("disabled", "");
@@ -281,9 +309,9 @@ function inicializar() {
     var modal_login = document.getElementById('modal-login');
 
     modal_login.addEventListener('hidden.bs.modal', function () {
-        reportar_login("");
-        document.getElementById("input-login-usuario").value = "";
-        document.getElementById("input-login-senha").value = "";
+
+        if (requisicao_de_login) resetar_form_login();
+
     });
 
     var div_conteudo_principal = document.getElementById("div-conteudo-principal");
