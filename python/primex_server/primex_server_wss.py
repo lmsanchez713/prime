@@ -10,9 +10,10 @@ import mysql.connector
 
 
 credenciais_mysql = {}
-mysql_db = None
-sql_login = ("SELECT usuario FROM usuarios WHERE usuario = '%s' AND senha = '%s';")
-sql_criar_usuario = ("INSERT INTO usuarios(usuario, senha) VALUES('%s', '%s');")
+sql_login = (
+    "SELECT usuario FROM usuarios WHERE usuario = %s AND senha = %s;")
+sql_criar_usuario = (
+    "INSERT INTO usuarios(usuario, senha) VALUES(%s, %s);")
 
 
 async def ainput(string: str) -> str:
@@ -21,6 +22,8 @@ async def ainput(string: str) -> str:
 
 
 async def primex_main(websocket, path):
+    mysql_db = mysql.connector.connect(
+        host="localhost", user=credenciais_mysql["usuario"], password=credenciais_mysql["senha"], database="primex")
     mysql_cursor = mysql_db.cursor(prepared=True)
 
     async for mensagem in websocket:
@@ -44,7 +47,15 @@ async def primex_main(websocket, path):
                 print("Criar usuário")
                 print(comando[1]["usuario"])
                 #hash = hashlib.sha512( str( "teste" ).encode("utf-8") ).hexdigest()
-                hash_usuario = hashlib.sha512( str( comando[1]["usuario"] ).encode("utf-8") ).hexdigest()
+                hash_usuario = hashlib.sha512(
+                    str(comando[1]["usuario"]).encode("utf-8")).hexdigest()
+                senha_com_sal = comando[1]["senha"] + hash_usuario
+                hash_senha = hashlib.sha512(
+                    str(senha_com_sal).encode("utf-8")).hexdigest()
+                mysql_cursor.execute(
+                    sql_criar_usuario, (comando[1]["usuario"], hash_senha,))
+                # linha = mysql_cursor.fetchone()
+                print(mysql_db.affected_rows())
 
         cmd = comando[0]
 
@@ -89,8 +100,6 @@ ssl_context.load_cert_chain("/var/www/certs/formatafacil.com.br/cert-chain.crt",
 
 with open('/code/mysql.json', 'r') as arquivo_json_mysql:
     credenciais_mysql = json.load(arquivo_json_mysql)
-    mysql_db = mysql.connector.connect(
-        host="localhost", user=credenciais_mysql["usuario"], password=credenciais_mysql["senha"], database="primex")
 
 server_ws = loop.create_task(server_proc(parada, ssl_context))
 loop.run_until_complete(main(parada, server_ws))
