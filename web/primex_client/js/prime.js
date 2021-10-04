@@ -107,7 +107,8 @@ function receber_requisicao(requisicao) {
 
                         if(resposta["status"] == "ok") {
 
-                            //
+                            resetar_form_login();
+                            reportar_login(resposta["mensagem"], "alert-primary");
 
                         }
 
@@ -131,8 +132,23 @@ function receber_requisicao(requisicao) {
 
                     else if(comando == "criar_usuario") {
 
-                        //
-                        
+                        if(resposta["status"] == "ok") {
+
+                            resetar_form_login();
+                            reportar_login(resposta["mensagem"], "alert-primary");
+
+                        }
+
+                        else if(resposta["status"] == "erro") {
+
+                            var campo_usuario = document.getElementById("input-login-usuario");
+                            var usuario = campo_usuario.value;
+                            resetar_form_login();
+                            campo_usuario.value = usuario;
+                            reportar_login(resposta["mensagem"], "alert-danger");
+
+                        }
+
                     }
 
                 }
