@@ -52,10 +52,10 @@ async def primex_main(websocket, path):
                 senha_com_sal = comando[1]["senha"] + hash_usuario
                 hash_senha = hashlib.sha512(
                     str(senha_com_sal).encode("utf-8")).hexdigest()
-                mysql_cursor.execute(
+                exec_ret = mysql_cursor.execute(
                     sql_criar_usuario, (comando[1]["usuario"], hash_senha,))
                 # linha = mysql_cursor.fetchone()
-                print(mysql_db.affected_rows())
+                print(exec_ret)
 
         cmd = comando[0]
 
