@@ -40,11 +40,19 @@ async def primex_main(websocket, path):
         req_id = requisicao.pop("req_id")
 
         for comando in requisicao.items():
+
             if comando[0] == "login":
+
                 print("Login")
+                resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"erro","mensagem":"Servidor em manutenção"}}}}'
+
             elif comando[0] == "logout":
+
                 print("Logout")
+                resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"erro","mensagem":"Servidor em manutenção"}}}}'
+
             elif comando[0] == "criar_usuario":
+                
                 print("Criar usuário")
                 print(comando[1]["usuario"])
                 #hash = hashlib.sha512( str( "teste" ).encode("utf-8") ).hexdigest()
@@ -60,12 +68,19 @@ async def primex_main(websocket, path):
                     conexao_mysql.commit()
                     # linha = mysql_cursor.fetchone()
                     print(cursor_mysql.rowcount)
+                    resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"sucesso","mensagem":"Usuário cadastrado com sucesso"}}}}'
+
                 except Error as err:
                     print("Erro", err)
+                    resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"erro","mensagem":"Não foi possível cadastrar o usuário<br>{err}"}}}}'
 
-        cmd = comando[0]
+            else:
+                print("Requisição não reconhecida")
+                resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"erro","mensagem":"Requisição não reconhecida"}}}}'
 
-        resposta = f'{{"req_id":{req_id},"{cmd}":{{"status":"erro","mensagem":"Servidor em manutenção"}}}}'
+        # cmd = comando[0]
+
+        # resposta = f'{{"req_id":{req_id},"{cmd}":{{"status":"erro","mensagem":"Servidor em manutenção"}}}}'
 
         await websocket.send(resposta)
         print(f"Requisição respondida: {resposta}")
