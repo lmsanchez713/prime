@@ -95,7 +95,7 @@ function receber_requisicao(requisicao) {
             var req_id = requisicao["req_id"];
             delete requisicao["req_id"];
 
-            console.log(typeof requisicao);
+            console.log(typeof requisicao.entries());
 
             for(const par of requisicao.entries()) {
 
@@ -103,8 +103,7 @@ function receber_requisicao(requisicao) {
 
             }
 
-            //return req_id
-            return 0;
+            return req_id;
 
         }
 
