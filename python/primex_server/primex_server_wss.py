@@ -22,9 +22,9 @@ async def ainput(string: str) -> str:
 
 
 async def primex_main(websocket, path):
-    mysql_db = mysql.connector.connect(
+    conexao_mysql = mysql.connector.connect(
         host="localhost", user=credenciais_mysql["usuario"], password=credenciais_mysql["senha"], database="primex")
-    mysql_cursor = mysql_db.cursor(prepared=True)
+    cursor_mysql = conexao_mysql.cursor(prepared=True)
 
     async for mensagem in websocket:
 
@@ -52,10 +52,11 @@ async def primex_main(websocket, path):
                 senha_com_sal = comando[1]["senha"] + hash_usuario
                 hash_senha = hashlib.sha512(
                     str(senha_com_sal).encode("utf-8")).hexdigest()
-                exec_ret = mysql_cursor.execute(
-                    sql_criar_usuario, (comando[1]["usuario"], hash_senha,))
+                exec_ret = cursor_mysql.execute(
+                    sql_criar_usuario, (comando[1]["usuario"], hash_senha))
+                conexao_mysql.commit()
                 # linha = mysql_cursor.fetchone()
-                print(exec_ret)
+                print(cursor_mysql.rowcount)
 
         cmd = comando[0]
 
