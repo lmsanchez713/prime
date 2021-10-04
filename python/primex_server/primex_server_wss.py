@@ -7,6 +7,7 @@ import ssl
 import hashlib
 import json
 import mysql.connector
+from mysql.connector import Error
 
 
 credenciais_mysql = {}
@@ -52,11 +53,15 @@ async def primex_main(websocket, path):
                 senha_com_sal = comando[1]["senha"] + hash_usuario
                 hash_senha = hashlib.sha512(
                     str(senha_com_sal).encode("utf-8")).hexdigest()
-                exec_ret = cursor_mysql.execute(
-                    sql_criar_usuario, (comando[1]["usuario"], hash_senha))
-                conexao_mysql.commit()
-                # linha = mysql_cursor.fetchone()
-                print(cursor_mysql.rowcount)
+
+                try:
+                    exec_ret = cursor_mysql.execute(
+                        sql_criar_usuario, (comando[1]["usuario"], hash_senha))
+                    conexao_mysql.commit()
+                    # linha = mysql_cursor.fetchone()
+                    print(cursor_mysql.rowcount)
+                except Error as err:
+                    print("Erro", err)
 
         cmd = comando[0]
 
