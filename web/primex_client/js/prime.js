@@ -206,13 +206,25 @@ function inicializar_websocket_principal() {
 
 }
 
-var classe_report_login = "alert-primary";
+var classe_report_login = "alert-info";
 
-function reportar_login(mensagem) {
+function reportar_login(mensagem, classe) {
 
     var report_login = document.getElementById("report-login");
 
     if (mensagem.length) {
+
+        if(classe !== undefined) {
+
+            if(classe != classe_report_login) {
+
+                report_login.classList.remove(classe_report_login);
+                report_login.classList.add(classe);
+                classe_report_login = classe;
+
+            }
+
+        }
 
         report_login.innerHTML = mensagem;
         report_login.style.display = "block";
@@ -281,6 +293,8 @@ function fazer_login(cadastrar) {
 
             async_sha512(senha_com_sal).then(function (hash_senha) {
 
+                reportar_login("Tentando...", "alert-info");
+
                 if (!cadastrar) {
 
                     requisicao_de_login = enviar_requisicao({
@@ -310,7 +324,7 @@ function fazer_login(cadastrar) {
 
         if ((campo_login.value.length == 0) && (campo_senha.value.length == 0)) {
 
-            reportar_login("Campos usuário e senha não podem ser vazios");
+            reportar_login("Campos usuário e senha não podem ser vazios", "alert-danger");
 
         }
 
@@ -326,7 +340,7 @@ function fazer_login(cadastrar) {
 
             // setTimeout(remover_status_login_invalido, 3000);
 
-            reportar_login("Campo usuário não pode ser vazio");
+            reportar_login("Campo usuário não pode ser vazio", "alert-danger");
 
         }
 
@@ -342,7 +356,7 @@ function fazer_login(cadastrar) {
 
             // setTimeout(remover_status_senha_invalida, 3000);
 
-            reportar_login("Campo senha não pode ser vazio");
+            reportar_login("Campo senha não pode ser vazio", "alert-danger");
 
         }
 
