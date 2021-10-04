@@ -95,7 +95,7 @@ function receber_requisicao(requisicao) {
             var req_id = requisicao["req_id"];
             delete requisicao["req_id"];
 
-            for(const par of requisicao) {
+            for(const par of requisicao.entries()) {
 
                 console.log(jsdump(par));
 
