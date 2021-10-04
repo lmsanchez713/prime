@@ -54,7 +54,6 @@ async def primex_main(websocket, path):
             elif comando[0] == "criar_usuario":
                 
                 print("Criar usuário")
-                print(comando[1]["usuario"])
                 #hash = hashlib.sha512( str( "teste" ).encode("utf-8") ).hexdigest()
                 hash_usuario = hashlib.sha512(
                     str(comando[1]["usuario"]).encode("utf-8")).hexdigest()
@@ -67,8 +66,7 @@ async def primex_main(websocket, path):
                         sql_criar_usuario, (comando[1]["usuario"], hash_senha))
                     conexao_mysql.commit()
                     # linha = mysql_cursor.fetchone()
-                    print(cursor_mysql.rowcount)
-                    resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"sucesso","mensagem":"Usuário cadastrado com sucesso"}}}}'
+                    resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"ok","mensagem":"Usuário cadastrado com sucesso"}}}}'
 
                 except Error as err:
                     print("Erro", err)
