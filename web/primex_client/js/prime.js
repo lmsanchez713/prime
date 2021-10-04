@@ -97,6 +97,12 @@ function receber_requisicao(requisicao) {
 
             console.log(typeof requisicao.entries());
 
+            for (var key in requisicao) {
+                if (requisicao.hasOwnProperty(key)) {
+                    console.log(key + " -> " + requisicao[key]);
+                }
+            }
+
             // for(const par of requisicao.entries()) {
 
             //     console.log(jsdump(par));
