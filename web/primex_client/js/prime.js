@@ -90,7 +90,7 @@ function receber_requisicao(requisicao) {
 
         if (typeof requisicao === "object") {
 
-            // console.log(jsdump(requisicao));
+            console.log(jsdump(requisicao));
 
             var req_id = requisicao["req_id"];
             delete requisicao["req_id"];
