@@ -113,7 +113,10 @@ function receber_requisicao(requisicao) {
 
                         else if(resposta["status"] == "erro") {
 
-                            document.getElementById("input-login-senha").value = "";
+                            var campo_usuario = document.getElementById("input-login-usuario");
+                            var usuario = campo_usuario.value;
+                            resetar_form_login();
+                            campo_usuario.value = usuario;
                             reportar_login(resposta["mensagem"], "alert-danger");
 
                         }
@@ -135,6 +138,8 @@ function receber_requisicao(requisicao) {
                 }
 
             }
+
+            delete requisicoes[req_id];
 
             return req_id;
 
