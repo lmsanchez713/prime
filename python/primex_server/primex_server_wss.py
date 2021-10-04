@@ -42,9 +42,9 @@ async def primex_main(websocket, path):
                 print("Logout")
             elif comando[0] == "criar_usuario":
                 print("Criar usuário")
-                print(json.dumps(comando[1]))
+                print(comando[1]["usuario"])
                 #hash = hashlib.sha512( str( "teste" ).encode("utf-8") ).hexdigest()
-                # hash_usuario = hashlib.sha512( str( "teste" ).encode("utf-8") ).hexdigest()
+                hash_usuario = hashlib.sha512( str( comando[1]["usuario"] ).encode("utf-8") ).hexdigest()
 
         cmd = comando[0]
 
