@@ -113,7 +113,8 @@ function receber_requisicao(requisicao) {
 
                         else if(resposta["status"] == "erro") {
 
-                            //
+                            document.getElementById("input-login-senha").value = "";
+                            reportar_login(resposta["mensagem"], "alert-danger");
 
                         }
 
@@ -293,8 +294,6 @@ function fazer_login(cadastrar) {
 
             async_sha512(senha_com_sal).then(function (hash_senha) {
 
-                reportar_login("Tentando...", "alert-info");
-
                 if (!cadastrar) {
 
                     requisicao_de_login = enviar_requisicao({
@@ -395,12 +394,12 @@ function inicializar() {
     //             "d93eed61a9581944256d2c101012aa18f07a1901ca53a40a0f47d61a4fb12e5b60e3bee70966b406e274441df8eca4bf8fdd2871a3e2ae33ff35063d08ac807d"
     //     }
     // });
-    enviar_requisicao({
-        "login": {
-            "usuario": "lucas", "senha":
-                "d93eed61a9581944256d2c101012aa18f07a1901ca53a40a0f47d61a4fb12e5b60e3bee70966b406e274441df8eca4bf8fdd2871a3e2ae33ff35063d08ac807d"
-        }
-    });
+    // enviar_requisicao({
+    //     "login": {
+    //         "usuario": "lucas", "senha":
+    //             "d93eed61a9581944256d2c101012aa18f07a1901ca53a40a0f47d61a4fb12e5b60e3bee70966b406e274441df8eca4bf8fdd2871a3e2ae33ff35063d08ac807d"
+    //     }
+    // });
     // enviar_requisicao({ "logout": "lucas" });
 
     // console.log(jsdump(requisicoes));
