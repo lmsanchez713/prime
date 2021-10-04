@@ -97,11 +97,11 @@ function receber_requisicao(requisicao) {
 
             console.log(typeof requisicao.entries());
 
-            for(const par of requisicao.entries()) {
+            // for(const par of requisicao.entries()) {
 
-                console.log(jsdump(par));
+            //     console.log(jsdump(par));
 
-            }
+            // }
 
             return req_id;
 
