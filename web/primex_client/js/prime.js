@@ -95,19 +95,45 @@ function receber_requisicao(requisicao) {
             var req_id = requisicao["req_id"];
             delete requisicao["req_id"];
 
-            // console.log(typeof requisicao.entries());
+            for (const comando in requisicao) {
 
-            for (var key in requisicao) {
-                if (requisicao.hasOwnProperty(key)) {
-                    console.log(key + " -> " + requisicao[key]);
+                if (requisicao.hasOwnProperty(comando)) {
+
+                    // console.log(key + " -> " + requisicao[comando]);
+
+                    const resposta = requisicao[comando];
+
+                    if(comando == "login") {
+
+                        if(resposta["status"] == "ok") {
+
+                            //
+
+                        }
+
+                        else if(resposta["status"] == "erro") {
+
+                            //
+
+                        }
+
+                    }
+
+                    else if(comando == "logout") {
+
+                        //
+                        
+                    }
+
+                    else if(comando == "criar_usuario") {
+
+                        //
+                        
+                    }
+
                 }
+
             }
-
-            // for(const par of requisicao.entries()) {
-
-            //     console.log(jsdump(par));
-
-            // }
 
             return req_id;
 
@@ -179,6 +205,8 @@ function inicializar_websocket_principal() {
     };
 
 }
+
+var classe_report_login = "alert-primary";
 
 function reportar_login(mensagem) {
 
