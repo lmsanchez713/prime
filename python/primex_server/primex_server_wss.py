@@ -52,11 +52,11 @@ async def primex_main(websocket, path):
                     str(senha_com_sal).encode("utf-8")).hexdigest()
 
                 try:
-                    exec_ret = cursor_mysql.execute(
+                    cursor_mysql.execute(
                         sql_login, (comando[1]["usuario"], hash_senha))
                     # conexao_mysql.commit()
-                    print("Linhas: " + str(cursor_mysql.rowcount))
-                    print(exec_ret)
+                    resultados = cursor_mysql.fetchall()
+                    print(json.dumps(resultados))
                     if cursor_mysql.rowcount > 0:
                         # linha = cursor_mysql.fetchone()
                         resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"ok","mensagem":"Bem-vindo, {comando[1]["usuario"]}"}}}}'
