@@ -44,17 +44,31 @@ async def primex_main(websocket, path):
             if comando[0] == "login":
 
                 print("Login")
-                resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"erro","mensagem":"Servidor em manutenção"}}}}'
 
-            elif comando[0] == "logout":
+                hash_usuario = hashlib.sha512(
+                    str(comando[1]["usuario"]).encode("utf-8")).hexdigest()
+                senha_com_sal = comando[1]["senha"] + hash_usuario
+                hash_senha = hashlib.sha512(
+                    str(senha_com_sal).encode("utf-8")).hexdigest()
 
-                print("Logout")
-                resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"erro","mensagem":"Servidor em manutenção"}}}}'
+                try:
+                    exec_ret = cursor_mysql.execute(
+                        sql_login, (comando[1]["usuario"], hash_senha))
+                    conexao_mysql.commit()
+                    if cursor_mysql.rowcount > 0:
+                        linha = cursor_mysql.fetchone()
+                        resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"ok","mensagem":"Bem-vindo, {comando[1]["usuario"]}"}}}}'
+                    else:
+                        resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"ok","mensagem":"Usuário ou senha incorretos"}}}}'
+
+                except Error as err:
+                    print("Erro", err)
+                    resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"erro","mensagem":"Não foi possível fazer login"}}}}'
 
             elif comando[0] == "criar_usuario":
                 
                 print("Criar usuário")
-                #hash = hashlib.sha512( str( "teste" ).encode("utf-8") ).hexdigest()
+
                 hash_usuario = hashlib.sha512(
                     str(comando[1]["usuario"]).encode("utf-8")).hexdigest()
                 senha_com_sal = comando[1]["senha"] + hash_usuario
@@ -71,6 +85,11 @@ async def primex_main(websocket, path):
                 except Error as err:
                     print("Erro", err)
                     resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"erro","mensagem":"Não foi possível cadastrar o usuário<br>{err}"}}}}'
+
+            elif comando[0] == "logout":
+
+                print("Logout")
+                resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"erro","mensagem":"Servidor em manutenção"}}}}'
 
             else:
                 print("Requisição não reconhecida")
