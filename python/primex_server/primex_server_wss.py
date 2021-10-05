@@ -55,7 +55,7 @@ async def primex_main(websocket, path):
                     exec_ret = cursor_mysql.execute(
                         sql_login, (comando[1]["usuario"], hash_senha))
                     # conexao_mysql.commit()
-                    print("Linhas: " + cursor_mysql.rowcount)
+                    print("Linhas: " + str(cursor_mysql.rowcount))
                     if cursor_mysql.rowcount > 0:
                         # linha = cursor_mysql.fetchone()
                         resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"ok","mensagem":"Bem-vindo, {comando[1]["usuario"]}"}}}}'
