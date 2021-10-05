@@ -25,7 +25,7 @@ async def ainput(string: str) -> str:
 async def primex_main(websocket, path):
     conexao_mysql = mysql.connector.connect(
         host="localhost", user=credenciais_mysql["usuario"], password=credenciais_mysql["senha"], database="primex")
-    cursor_mysql = conexao_mysql.cursor(prepared=True, buffered=True)
+    cursor_mysql = conexao_mysql.cursor(prepared=True)
 
     async for mensagem in websocket:
 
@@ -55,6 +55,7 @@ async def primex_main(websocket, path):
                     exec_ret = cursor_mysql.execute(
                         sql_login, (comando[1]["usuario"], hash_senha))
                     # conexao_mysql.commit()
+                    print("Linhas: " + cursor_mysql.rowcount)
                     if cursor_mysql.rowcount > 0:
                         # linha = cursor_mysql.fetchone()
                         resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"ok","mensagem":"Bem-vindo, {comando[1]["usuario"]}"}}}}'
