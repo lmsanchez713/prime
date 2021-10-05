@@ -112,7 +112,7 @@ function receber_requisicao(requisicao) {
                             setTimeout(function () {
                                 $('#modal-login').modal('hide');
                             }, 1000);
-                            //mudar botões login para logout
+                            alternar_botoes_login_navbar(true);
                             //carregar app
 
                         }
@@ -131,7 +131,8 @@ function receber_requisicao(requisicao) {
 
                     else if (comando == "logout") {
 
-                        //
+                        resetar_form_login();
+                        alternar_botoes_login_navbar(false);
 
                     }
 
@@ -144,7 +145,7 @@ function receber_requisicao(requisicao) {
                             setTimeout(function () {
                                 $('#modal-login').modal('hide');
                             }, 1000);
-                            //mudar botões login para logout
+                            alternar_botoes_login_navbar(true);
                             //carregar app
 
                         }
@@ -389,6 +390,34 @@ function fazer_login(cadastrar) {
             reportar_login("Campo senha não pode ser vazio", "alert-danger");
 
         }
+
+    }
+
+}
+
+function fazer_logout() {
+
+    enviar_requisicao({ "logout": {} });
+
+}
+
+function alternar_botoes_login_navbar(logado) {
+
+    wrapper_botoes = document.getElementById("botoes-login-navbar");
+
+    if (logado) {
+
+        wrapper_botoes.innerHTML = `<button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal"
+            data-bs-target="#modal-login">Login</button>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+            data-bs-target="#modal-login">Cadastre-se</button>`;
+
+    }
+
+    else {
+
+        wrapper_botoes.innerHTML = `<span class="me-2">Bem-vindo</span>
+            <button type="button" class="btn btn-warning" onclick="fazer_logout();">Logout</button>`;
 
     }
 

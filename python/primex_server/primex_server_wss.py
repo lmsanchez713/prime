@@ -90,7 +90,7 @@ async def primex_main(websocket, path):
             elif comando[0] == "logout":
 
                 print("Logout")
-                resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"erro","mensagem":"Servidor em manutenção"}}}}'
+                resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"ok","mensagem":"Até a próxima!"}}}}'
 
             else:
                 print("Requisição não reconhecida")
