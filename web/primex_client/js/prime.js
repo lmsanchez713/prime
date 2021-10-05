@@ -103,16 +103,21 @@ function receber_requisicao(requisicao) {
 
                     const resposta = requisicao[comando];
 
-                    if(comando == "login") {
+                    if (comando == "login") {
 
-                        if(resposta["status"] == "ok") {
+                        if (resposta["status"] == "ok") {
 
                             resetar_form_login();
                             reportar_login(resposta["mensagem"], "alert-success");
+                            setTimeout(function () {
+                                $('#modal-login').modal('hide');
+                            }, 1000);
+                            //mudar botões login para logout
+                            //carregar app
 
                         }
 
-                        else if(resposta["status"] == "erro") {
+                        else if (resposta["status"] == "erro") {
 
                             var campo_usuario = document.getElementById("input-login-usuario");
                             var usuario = campo_usuario.value;
@@ -124,22 +129,27 @@ function receber_requisicao(requisicao) {
 
                     }
 
-                    else if(comando == "logout") {
+                    else if (comando == "logout") {
 
                         //
-                        
+
                     }
 
-                    else if(comando == "criar_usuario") {
+                    else if (comando == "criar_usuario") {
 
-                        if(resposta["status"] == "ok") {
+                        if (resposta["status"] == "ok") {
 
                             resetar_form_login();
                             reportar_login(resposta["mensagem"], "alert-success");
+                            setTimeout(function () {
+                                $('#modal-login').modal('hide');
+                            }, 1000);
+                            //mudar botões login para logout
+                            //carregar app
 
                         }
 
-                        else if(resposta["status"] == "erro") {
+                        else if (resposta["status"] == "erro") {
 
                             var campo_usuario = document.getElementById("input-login-usuario");
                             var usuario = campo_usuario.value;
@@ -236,9 +246,9 @@ function reportar_login(mensagem, classe) {
 
     if (mensagem.length) {
 
-        if(classe !== undefined) {
+        if (classe !== undefined) {
 
-            if(classe != classe_report_login) {
+            if (classe != classe_report_login) {
 
                 report_login.classList.remove(classe_report_login);
                 report_login.classList.add(classe);
