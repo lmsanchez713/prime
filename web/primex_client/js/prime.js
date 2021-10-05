@@ -108,7 +108,7 @@ function receber_requisicao(requisicao) {
                         if(resposta["status"] == "ok") {
 
                             resetar_form_login();
-                            reportar_login(resposta["mensagem"], "alert-primary");
+                            reportar_login(resposta["mensagem"], "alert-success");
 
                         }
 
@@ -135,7 +135,7 @@ function receber_requisicao(requisicao) {
                         if(resposta["status"] == "ok") {
 
                             resetar_form_login();
-                            reportar_login(resposta["mensagem"], "alert-primary");
+                            reportar_login(resposta["mensagem"], "alert-success");
 
                         }
 
