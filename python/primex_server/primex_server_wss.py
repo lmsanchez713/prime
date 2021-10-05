@@ -59,7 +59,7 @@ async def primex_main(websocket, path):
                         linha = cursor_mysql.fetchone()
                         resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"ok","mensagem":"Bem-vindo, {comando[1]["usuario"]}"}}}}'
                     else:
-                        resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"ok","mensagem":"Usuário ou senha incorretos"}}}}'
+                        resposta = f'{{"req_id":{req_id},"{comando[0]}":{{"status":"erro","mensagem":"Usuário ou senha incorretos"}}}}'
 
                 except Error as err:
                     print("Erro", err)
