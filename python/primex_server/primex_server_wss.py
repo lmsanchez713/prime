@@ -55,7 +55,9 @@ async def primex_main(websocket, path):
                     cursor_mysql.execute(
                         sql_login, (comando[1]["usuario"], hash_senha))
                     # conexao_mysql.commit()
+                    print("Linhas: " + str(cursor_mysql.rowcount))
                     resultados = cursor_mysql.fetchall()
+                    print("Linhas: " + str(cursor_mysql.rowcount))
                     print(json.dumps(resultados))
                     if cursor_mysql.rowcount > 0:
                         # linha = cursor_mysql.fetchone()
