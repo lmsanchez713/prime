@@ -407,17 +407,17 @@ function alternar_botoes_login_navbar(logado) {
 
     if (logado) {
 
-        wrapper_botoes.innerHTML = `<button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal"
-            data-bs-target="#modal-login">Login</button>
-            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-            data-bs-target="#modal-login">Cadastre-se</button>`;
+        wrapper_botoes.innerHTML = `<span class="me-2">Bem-vindo</span>
+            <button type="button" class="btn btn-warning" onclick="fazer_logout();">Logout</button>`;
 
     }
 
     else {
 
-        wrapper_botoes.innerHTML = `<span class="me-2">Bem-vindo</span>
-            <button type="button" class="btn btn-warning" onclick="fazer_logout();">Logout</button>`;
+        wrapper_botoes.innerHTML = `<button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal"
+            data-bs-target="#modal-login">Login</button>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+            data-bs-target="#modal-login">Cadastre-se</button>`;
 
     }
 
