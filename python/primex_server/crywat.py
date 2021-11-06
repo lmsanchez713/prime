@@ -1,5 +1,5 @@
-from binance.lib.utils import config_logging
 from binance.websocket.spot.websocket_client import SpotWebsocketClient
+from binance.lib.utils import config_logging
 import time
 import logging
 
@@ -8,7 +8,7 @@ config_logging(logging, logging.DEBUG)
 def message_handler(message):
     print(message)
 
-ws_client = SpotWebsocketClient(stream_url="wss://api1.binance.com")
+ws_client = SpotWebsocketClient()
 ws_client.start()
 
 ws_client.mini_ticker(
@@ -18,11 +18,11 @@ ws_client.mini_ticker(
 )
 
 # Combine selected streams
-# ws_client.instant_subscribe(
-#     stream=['bnbusdt@bookTicker', 'ethusdt@bookTicker'],
-#     callback=message_handler,
-# )
+ws_client.instant_subscribe(
+    stream=['bnbusdt@bookTicker', 'ethusdt@bookTicker'],
+    callback=message_handler,
+)
 
-time.sleep(3)
+time.sleep(10)
 
 ws_client.stop()
