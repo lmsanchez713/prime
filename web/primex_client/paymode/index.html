@@ -30,13 +30,30 @@
 
 <body>
 
-  
+
   <script src="/js/jquery-3.6.0.js"></script>
   <script src="/js/bootstrap.bundle.js"></script>
 
   <script src="/js/prime.js?v=6"></script>
 
   <script>
+
+    function processar_app_json(json, nodo = document.body) {
+      //
+    }
+
+    let app = {
+      "tipo": "app", "conteudo": [
+        { "tipo": "navbar", "estilo": "escuro", "conteudo": "NAV" },
+        {
+          "tipo": "bloco", "conteudo": [
+            { "tipo": "botao", "conteudo": "BOT" }, { "tipo": "imagem", "endereco": "/img/inferno.svg" }
+          ]
+        }
+      ]
+    };
+
+    console.log(jsdump(app));
 
     // inicializar();
     // setTimeout(function() {
